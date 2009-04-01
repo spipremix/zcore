@@ -1,0 +1,31 @@
+<plugin>
+	<nom>Squelettes Zesty</nom>
+	<auteur>Matthieu Marcillaud, Romy Tetue (dist), Collectif SPIP</auteur>
+	<licence>GNU/GPL</licence>
+	<version>1.0.2</version>
+	<etat>stable</etat>
+    <description>
+	Un jeu de squelettes simples pour apprendre la syntaxe SPIP, le HTML et le CSS.
+
+	Il g&egrave;re uniquement les pages :
+-* sommaire,
+-* article (titre, chapo, texte, ps) (+ documents li&eacute;s),
+-* rubrique (+ documents li&amp;eacute;s),
+-* auteur,
+-* plan,
+-* recherche,
+-* fil RSS,
+-* 404
+
+	Ces squelettes ne s'occupent donc pas des
+-* mots clés,
+-* sites, ni syndication,
+-* br&egrave;ves,
+
+
+	De nombreux commentaires sont (ou seront) pr&eacute;sents dans le code source des fichiers.
+	Vous pouvez commencer par d&eacute;couvrir le fichier sommaire.html
+	dans un premier temps.
+	</description>
+	<prefix>zesty</prefix>
+</plugin>

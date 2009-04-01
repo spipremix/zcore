@@ -1,0 +1,63 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+	[(#REM) Fil d'Ariane ]
+	<div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</div>
+
+	<div class="cartouche">
+		[(#LOGO_RUBRIQUE|image_reduire{200,200})]
+		<h1 class="#EDIT{titre}">#TITRE</h1>
+		[<p><small><:dernier_ajout:> : (#DATE|affdate_jourcourt).</small></p>]
+	</div>
+
+	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+
+	<B_articles>
+	<div class="menu articles">
+		#ANCRE_PAGINATION
+		<h2><:articles_rubrique:></h2>
+		<ul>
+			<BOUCLE_articles(ARTICLES){id_rubrique} {!par date} {pagination 5}>
+			<li>
+				<small>[(#DATE|affdate_jourcourt)]</small>
+				<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
+				[(#LOGO_ARTICLE{#URL_ARTICLE}|image_reduire{150,100})]
+				[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
+			</li>
+			</BOUCLE_articles>
+		</ul>
+		[<p class="pagination">(#PAGINATION)</p>]
+	</div>
+	</B_articles>
+	
+		[(#REM) Si aucun article, affiche un plan de la rubrique ]
+		<B_sous_rubriques>
+		<div class="menu rubriques">
+			<h2><:sous_rubriques:></h2>
+			<ul>
+				<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
+				<li>
+					<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+
+					[(#REM) Une boucle recursive pour le mini plan]
+					<B_miniplan>
+					<ul>
+						<BOUCLE_miniplan(RUBRIQUES) {id_parent} {par num titre, titre}>
+						<li>
+							<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+							<BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
+						</li>
+						</BOUCLE_miniplan>
+					</ul>
+					</B_miniplan>
+
+				</li>
+				</BOUCLE_sous_rubriques>
+			</ul>
+			</div>
+		</B_sous_rubriques>
+	<//B_articles>
+
+	[(#REM) Gestion du portfolio et des documents ]
+	[(#INCLURE{fond=pages/inc-documents}{id_rubrique})]	
+
+	[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+</BOUCLE_contenu_rubrique>

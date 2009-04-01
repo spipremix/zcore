@@ -1,0 +1,24 @@
+
+<div class="cartouche invisible">
+	<h1 class="invisible">#NOM_SITE_SPIP</h1>
+</div>
+
+[<div class="chapo">(#DESCRIPTIF_SITE_SPIP)</div>]
+
+<B_articles>
+<div class="menu articles">
+	#ANCRE_PAGINATION
+	<h2><:derniers_articles:></h2>
+	<ul>
+		<BOUCLE_articles(ARTICLES) {!par date} {pagination 5}>
+		<li>
+			<small>[(#DATE|affdate_jourcourt)]</small>
+			<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
+			[(#LOGO_ARTICLE{#URL_ARTICLE}|image_reduire{150,100})]
+			[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
+		</li>
+		</BOUCLE_articles>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles>

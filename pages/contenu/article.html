@@ -1,0 +1,25 @@
+<BOUCLE_contenu_article(ARTICLES){id_article}>
+[(#REM) Fil d'Ariane ]
+<div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</div>
+
+<div class="cartouche">
+	[(#LOGO_ARTICLE|image_reduire{200,200})]
+	<h1 class="#EDIT{titre}">#TITRE</h1>
+
+	<p><small>[(#DATE|nom_jour) ][(#DATE|affdate)][, <:par_auteur:> (#LESAUTEURS)]</small></p>
+</div>
+
+[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{500,0})</div>]
+
+[<div class="ps">
+	<h2><:info_ps:></h2>
+	<div class="#EDIT{ps}">(#PS|image_reduire{500,0})</div>
+</div>]
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=pages/inc-documents}{id_article})]
+
+[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+
+</BOUCLE_contenu_article>

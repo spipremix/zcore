@@ -1,0 +1,182 @@
+/* --------------------------------------------------------- */
+/* Feuille de style des squelettes par defaut pour SPIP 2.0  */
+/* --------------------------------------------------------- */
+
+/* couleurs utilisees
+ *
+ * - #5ac
+ * - #f9f9f9
+ * - #ddd
+ * - #f63
+ */
+
+
+/* ------------------------------------------
+/* Typographie generale (style transversaux)
+/* ------------------------------------------ */
+html { font-size: 100%; } /* Cf.: http://pompage.net/pompe/definir-des-tailles-de-polices-en-CSS/ */
+body { font-size: 0.8125em; font-family: "Luxi sans", "Lucida Grande", Lucida, "Lucida Sans Unicode", sans-serif; color: #333; }
+
+/* Titraille / Intertitres */
+h1,h2,h3,h4,h5,h6 { margin: 0; padding: 0; font-weight: normal; font-size: 1em; font-family: Georgia, Times, serif; }
+h1 { font-size: 1.70em; color: #000; }
+h2 { font-size: 1.40em; font-weight: normal; }
+h2, h2 a, h2 a:focus, h2 a:hover, h2 a:active { color: #003; }
+h3 { font-size: 1.20em; font-weight: bold; }
+h3.spip {} /* Cf.: spip_style.css */
+hr.spip {} /* Cf.: spip_style.css */
+
+/* Autres enrichissements typo */
+strong { font-weight: bold; }
+em { font-style: italic; }
+abbr, acronym { border-bottom: 1px dotted; cursor: help; }
+small { font-size: 0.90em; color: #666; }
+dfn { font-weight: bold; color: #666; }
+del { text-decoration: line-through; }
+ins { color: red !important; text-decoration: none; }
+sup, sub { font-size: .8em; font-variant: normal; }
+
+/* Listes */
+ul.spip {} /* Cf.: spip_style.css */
+ol.spip {} /* Cf.: spip_style.css */
+dl {}
+dt {}
+dd {}
+
+/* Citations, code et poesie */
+cite {}
+q {}
+blockquote {}
+blockquote.spip {} /* Cf.: spip_style.css */
+blockquote.spip_poesie {} /* Cf.: spip_style.css */
+/* Cf.: spip_style.css */
+.spip_code {color:#f63;}
+.spip_cadre {color:#444; background-color: #fff; border: 1px solid #ddd; font-size:1em; padding:0.5em; }
+address {}
+
+/* Tableaux */
+/* Cf.: spip_style.css */
+table.spip { width: 99%; }
+table.spip tr.row_first { background: #5ac; color:white;}
+table.spip td, table.spip th {border:white 2px solid;}
+
+/* Logos, documents et images */
+img { margin: 0; padding: 0; border: 0; }
+.spip_logos {} /* Cf.: spip_style.css */
+.spip_documents {} /* Cf.: spip_style.css */
+.spip_documents_center {} /* Cf.: spip_style.css */
+.spip_documents_left {} /* Cf.: spip_style.css */
+.spip_documents_right {} /* Cf.: spip_style.css */
+.spip_doc_titre {} /* Cf.: spip_style.css */
+.spip_doc_descriptif {} /* Cf.: spip_style.css */
+
+
+/* ------------------------------------------
+/* Disposition a l'ecran des blocs principaux
+/* ------------------------------------------ */
+body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
+
+#page { position: relative; background: #fff; width: 58em; margin: 1em auto; padding:1em 2em; text-align: left; border:3px solid #ddd; }
+
+#entete { width: 100%; margin: 0; padding-top: 1.60em; padding-bottom: 1.60em; margin-bottom:1em; border-bottom: 2px solid #5ac;}
+#entete a.accueil { display: block; width: 67%; }
+#entete a.accueil img.spip_logos { vertical-align: bottom; line-height: 1em; }
+#entete a.accueil #nom_site_spip { vertical-align: bottom; font-size: 2.2em; font-family: Georgia, Times, serif; font-weight: normal; }
+#entete .formulaire_menu_lang { position: absolute; right: 0; top: 0.90em; display: block; width: 30%; } /*Cf.: spip_formulaires.css*/
+
+#conteneur { clear: both; overflow: hidden; }
+#contenu { padding-top: 0.30em; float:left; width:65%;}
+
+#navigation { float: right; width: 30%; margin-top: 1em; overflow: hidden; }
+
+#pied { clear: both; width: 100%; margin: 1em 0 0 0; padding: 0.60em 0; border: 2px solid #ddd; background:#f9f9f9; text-align: center; font-size: 0.90em; }
+#pied a { color:#666; }
+#pied img { vertical-align: middle; }
+
+/* Espaceur de blocs */
+.nettoyeur { clear: both; height: 0; margin: 0; padding: 0; border: 0; line-height: 1px; font-size: 1px; }
+
+/* Non visible a l'ecran */
+.invisible { position: absolute; top: -3000em; height: 1%; }
+
+
+/* ------------------------------------------
+/* Habillage des elements du contenu
+/* ------------------------------------------ */
+
+#hierarchie { clear: both; margin-bottom: 2em; font-size: 0.84em; }
+#hierarchie, #hierarchie a { color: #666; }
+
+.cartouche { margin-bottom: 2em; }
+.cartouche .spip_logos { float: right; margin-left: 16px; margin-bottom: 4px; }
+.cartouche p { margin: 0; padding: 0; clear: left; }
+
+.chapo { margin-bottom: 1.50em; line-height: 1.40em; font-size:1.1em; }
+.texte { line-height: 1.60em; }
+.ps, .notes { margin-bottom: 2em; line-height: 1.40em; }
+.notes { clear: both; font-size: 0.90em; }
+
+
+/* Portfolio */
+#documents_portfolio { clear: both; margin: 2em auto; text-align: center; }
+#documents_portfolio .spip_logos { margin: 6px 3px 0 3px; border: 4px solid #DDD; }
+#documents_portfolio a.on .spip_logos { border-color: #f63; }
+#documents_portfolio a:focus .spip_logos,
+#documents_portfolio a:hover .spip_logos,
+#documents_portfolio a:active .spip_logos { border-color: #5ac; }
+
+
+/* ------------------------------------------
+/* Sous-navigation et autres menus
+/* ------------------------------------------ */
+
+/* Habillage general des menus de navigation */
+
+.menu { clear: both; margin-bottom: 2em; text-align: left; }
+.menu p { margin: 0.20em 0; padding: 0.20em 0.10em; }
+.menu ul { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #ddd; }
+.menu ul li { margin: 0.20em 0; padding: 0.20em;}
+.menu ul li ul { margin-left: 1em; border: 0; }
+.menu ul li li { padding: 0; border: 0; }
+
+#navigation .menu {background:#fcfcfc; padding:0.5em; border: 1px solid #ddd;}
+#navigation .menu a {color:#666;}
+#navigation .menu ul {border-bottom:0;}
+#navigation .menu li {list-style:square; margin-left:15px; padding:0; color:#f63;}
+#navigation .menu ul li ul {margin-left:0;}
+
+/* Pagination */
+.pagination { clear: both; text-align: right; font-size: 0.90em; color: #666; }
+.pagination .on { font-weight: bold; color: #666; }
+
+/* Rubriques */
+/*
+.rubriques ul { border: 0; }
+.rubriques ul li { background: #EEE; border: 0; }
+*/
+/* formulaire recherche */
+#formulaire_recherche {float:right; margin: 0.5em 0;}
+#formulaire_recherche label{display:none;}
+
+
+/* Listes d'articles et extraits introductifs */
+.articles ul li { clear: both; border:0;}
+.articles ul li h3 { margin: 0.30em 0; border-bottom:1px solid #5ac;}
+.articles ul li h3 a:hover { text-decoration:none;}
+.articles ul li>small {  display:block; float:right; margin-top:0.6em;}
+.articles .spip_logos { float: right; clear: right; margin: .8em 0 4px 16px; }
+.articles ul li .introduction { margin-top: 0.30em; line-height: 1.40em; padding: 0.5em 0 1.5em 1em;}
+
+
+/* Couleurs des liens
+---------------------------------------------- */
+a { color: #4ac; text-decoration: none; }
+a:focus,a:hover,a:active { color: #5ac; text-decoration: underline; }
+a.spip_out, a.spip_glossaire {
+	color: #5ac;
+	background:transparent url(img/out.gif) no-repeat scroll right center;
+	padding-right:12px;
+}
+/* formulaire recherche */
+#formulaire_recherche {float:right;}
+#formulaire_recherche label{display:none;}

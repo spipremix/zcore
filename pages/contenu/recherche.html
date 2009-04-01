@@ -1,0 +1,37 @@
+		
+[(#REM) Fil d'Ariane ]
+<div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:info_rechercher:>[ &gt; <strong class="on">(#RECHERCHE)</strong>]</div>
+
+[<div class="cartouche">
+	<h1><:resultats_recherche:></h1>
+	<p class="soustitre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</p>
+</div>]
+
+[(#REM) Articles trouves ]
+<B_articles>
+<div class="menu articles">
+	#ANCRE_PAGINATION
+	<h2><:articles:> (#GRAND_TOTAL)</h2>
+	<ul>
+		<BOUCLE_articles(ARTICLES) {recherche} {par points}{inverse} {pagination}>
+		<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		</BOUCLE_articles>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles>
+
+[(#REM) Rubriques trouvees ]
+<B_rubriques>
+<div class="menu rubriques">
+	#ANCRE_PAGINATION
+	<h2><:rubriques:> (#GRAND_TOTAL)</h2>
+	<ul>
+		<BOUCLE_rubriques(RUBRIQUES) {recherche} {par points}{inverse} {pagination 5}>
+		<li><a href="#URL_RUBRIQUE">#TITRE</a></li>
+		</BOUCLE_rubriques>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_rubriques>
+

@@ -28,17 +28,17 @@
 	que l'on avait passé avec {type=sommaire}, variable que l'on
 	récupère avec #ENV{type}.
 
-	Ainsi, pour la page sommaire, on inclue la page pages/head/sommaire.html
-	Puis on inclue le fichier pages/inc-head.html
+	Ainsi, pour la page sommaire, on inclue la page pages/inc-head.html
+	Puis le fichier pages/head/sommaire.html
 
-	Voir ces fichiers des précisions sur leur contenu.
+	Voir ces fichiers pour des précisions sur leur contenu.
 ]
-<INCLURE{fond=pages/head/#ENV{type}}{env} />
 <INCLURE{fond=pages/inc-head} />
+<INCLURE{fond=pages/head/#ENV{type}}{env} />
 </head>
 [(#REM)
 	Le <body> contient le contenu texte de la page,
-	tout ce qui est écrit dedans sera visible dans par l'internaute
+	tout ce qui est écrit dedans sera visible par l'internaute
 	(si le fichier CSS de présentation laisse les contenus visibles).
 
 	On ajoute sur la balise body une classe qui changera de nom

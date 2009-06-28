@@ -10,4 +10,17 @@
 		</ul>
 	</div>
 	</B_articles_rubrique>
+
+  [(#REM) Menu de navigation mots-cles ]
+  <B_mots>
+  <div class="menu">
+      <h2><:mots_clefs:></h2>
+      <ul>
+      <BOUCLE_mots(MOTS) {id_article} {par titre}>
+          <li><a href="#URL_MOT" rel="tag">#TITRE</a></li>
+      </BOUCLE_mots>
+      </ul>
+  </div>
+  </B_mots>
+
 </BOUCLE_extra_article>

@@ -3,7 +3,7 @@
 	<div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</div>
 
 	<div class="cartouche">
-		[(#LOGO_RUBRIQUE|image_reduire{200,200})]
+		[(#LOGO_RUBRIQUE||image_reduire{200,200})]
 		<h1 class="#EDIT{titre}">#TITRE</h1>
 		[<p><small><:dernier_ajout:> : (#DATE|affdate_jourcourt).</small></p>]
 	</div>
@@ -19,7 +19,7 @@
 			<li>
 				<small>[(#DATE|affdate_jourcourt)]</small>
 				<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
-				[(#LOGO_ARTICLE{#URL_ARTICLE}|image_reduire{150,100})]
+				[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 				[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
 			</li>
 			</BOUCLE_articles>
@@ -57,7 +57,45 @@
 	<//B_articles>
 
 	[(#REM) Gestion du portfolio et des documents ]
-	[(#INCLURE{fond=pages/inc-documents}{id_rubrique})]	
+	[(#INCLURE{fond=pages/inc/documents}{id_rubrique})]	
+
+	[(#REM) Breves du secteur ]
+	<B_breves>
+	<div class="menu">
+			#ANCRE_PAGINATION
+			<h2><:breves:></h2>
+			<ul>
+					<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
+					<li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE">#TITRE</a></li>
+					</BOUCLE_breves>
+			</ul>
+			[<p class="pagination">(#PAGINATION)</p>]
+	</div>
+	</B_breves>
+
+	[(#REM) Sites de la rubrique ]
+	<B_sites>
+	<div class="menu">
+			<h2><:sur_web:></h2>
+			<ul>
+					<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
+					<li>
+		<a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]">#NOM_SITE</a>
+							<B_syndic>
+							<ul>
+									<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
+									<li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
+									</BOUCLE_syndic>
+							</ul>
+							</B_syndic>
+					</li>
+					</BOUCLE_sites>
+			</ul>
+	</div>
+	</B_sites>
+
+	[(#REM) Proposer un site ]
+	#FORMULAIRE_SITE
 
 	[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
 </BOUCLE_contenu_rubrique>

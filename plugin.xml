@@ -27,5 +27,7 @@
 	Vous pouvez commencer par d&eacute;couvrir le fichier sommaire.html
 	dans un premier temps.
 	</description>
-	<prefix>zesty</prefix>
+	<prefix>Z</prefix>
+	<chemin dir='' />
+	<chemin dir='pages' />
 </plugin>

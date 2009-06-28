@@ -1,0 +1,25 @@
+<BOUCLE_breve_principal(BREVES) {id_breve}>
+  [(#REM) Breves dans la meme rubrique ]
+  <B_breves>
+  <div class="menu">
+      <h2><:autres_breves:></h2>
+      <ul>
+          <BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {0,10}>
+          <li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE"[ class="(#EXPOSE)"]>#TITRE</a></li>
+          </BOUCLE_breves>
+      </ul>
+  </div>
+  </B_breves>
+
+  [(#REM) Menu de navigation mots-cles ]
+  <B_mots>
+  <div class="menu">
+      <h2><:mots_clefs:></h2>
+      <ul>
+      <BOUCLE_mots(MOTS) {id_breve} {par titre}>
+          <li><a href="#URL_MOT" rel="tag">#TITRE</a></li>
+      </BOUCLE_mots>
+      </ul>
+  </div>
+  </B_mots>
+</BOUCLE_breve_principal>

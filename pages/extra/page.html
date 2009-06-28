@@ -1,0 +1,10 @@
+#SET{perso,#CHEMIN{extra/page-#ENV{composition}}}
+[(#GET{perso}|oui)
+#INCLURE{fond=extra/page-#ENV{composition}}{env}
+][(#GET{perso}|non)
+
+[(#REM) Inscription au site ]
+#FORMULAIRE_INSCRIPTION
+
+]
+

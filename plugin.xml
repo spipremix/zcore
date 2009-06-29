@@ -28,6 +28,10 @@
 	dans un premier temps.
 	</description>
 	<prefix>Z</prefix>
+	<pipeline>
+		<nom>styliser</nom>
+		<inclure>z_pipelines.php</inclure>
+	</pipeline>
 	<chemin dir='' />
 	<chemin dir='pages' />
 </plugin>

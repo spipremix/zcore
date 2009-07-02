@@ -1,37 +1,16 @@
 <plugin>
-	<nom>Squelettes Zesty</nom>
+	<nom>Squelettes Z pour SPIP (Zpip)</nom>
 	<auteur>Matthieu Marcillaud, Romy Tetue (dist), Collectif SPIP</auteur>
 	<licence>GNU/GPL</licence>
-	<version>1.0.2</version>
+	<version>1.0.0</version>
 	<etat>stable</etat>
     <description>
-	Un jeu de squelettes simples pour apprendre la syntaxe SPIP, le HTML et le CSS.
-
-	Il g&egrave;re uniquement les pages :
--* sommaire,
--* article (titre, chapo, texte, ps) (+ documents li&eacute;s),
--* rubrique (+ documents li&amp;eacute;s),
--* auteur,
--* plan,
--* recherche,
--* fil RSS,
--* 404
-
-	Ces squelettes ne s'occupent donc pas des
--* mots clés,
--* sites, ni syndication,
--* br&egrave;ves,
-
-
-	De nombreux commentaires sont (ou seront) pr&eacute;sents dans le code source des fichiers.
-	Vous pouvez commencer par d&eacute;couvrir le fichier sommaire.html
-	dans un premier temps.
+	Un jeu de squelettes comme squelettes-dist/ de SPIP, mais qui peut utiliser les th&egrave;mes
+	de [->http://www.spip-contrib.net/Themes]
 	</description>
 	<prefix>Z</prefix>
 	<pipeline>
 		<nom>styliser</nom>
 		<inclure>z_pipelines.php</inclure>
 	</pipeline>
-	<chemin dir='' />
-	<chemin dir='pages' />
 </plugin>

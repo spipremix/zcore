@@ -33,8 +33,8 @@
 
 	Voir ces fichiers pour des précisions sur leur contenu.
 ]
-<INCLURE{fond=pages/inc/head} />
-<INCLURE{fond=pages/head/#ENV{type}}{env} />
+<INCLURE{fond=inclure/head} />
+<INCLURE{fond=head/#ENV{type}}{env} />
 </head>
 <body class="page_#ENV{type,page}[ #ENV{type,page}_(#ENV{composition,''})]">
 <INCLURE{fond=body-layout}{env}>

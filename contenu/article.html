@@ -18,18 +18,18 @@
 </div>]
 
 [(#REM) Gestion du portfolio et des documents ]
-[(#INCLURE{fond=pages/inc/documents}{id_article})]
+[(#INCLURE{fond=inclure/documents}{id_article})]
 
 [(#REM) Petition :
 La petition ayant une PAGINATION il faut absolument {env}
 et pourquoi pas ajax
-][(#PETITION|?{' '})<INCLURE{fond=inc-petition}{id_article}{env}{ajax}>]
+][(#PETITION|oui)<INCLURE{fond=inclure/petition}{id_article}{env}{ajax}>]
 
 [<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
 
 [(#REM) Forum de l'article ]
 <a href="#forum" name="forum" id="forum"></a>
-<INCLURE{fond=inc/forum}{id_article} />
+<INCLURE{fond=inclure/forum}{id_article} />
 [<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow"><:repondre_article:></a></p>]
 
 

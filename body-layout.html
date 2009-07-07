@@ -1,47 +1,21 @@
-[(#REM)
-	Le <body> contient le contenu texte de la page,
-	tout ce qui est écrit dedans sera visible par l'internaute
-	(si le fichier CSS de présentation laisse les contenus visibles).
-
-	On ajoute sur la balise body une classe qui changera de nom
-	en fonction du type de page. "page_sommaire" ou "page_article" par exemple.
-
-	De cette manière, il sera aisé en CSS de réaliser différents habillages
-	en fonction du type de page, en utilisant ce sélecteur. Exemple :
-	.page_sommaire #navigation {background:blue;}
-
-	La suite ne sont que des inclusions dont on a déjà vu le principe.
-	Vous pouvez aller voir les pages en question pour des précisions.
-
-	Ce qui est utile à comprendre est le nommage des blocs,
-	ces fameux <div id="chose"> code </div>.
-
-	Ils servent à identifier des parties de la page et permettront
-	ainsi d'appliquer des présentations particulières via CSS.
-
-	Pour sélectionner le bloc "entete", et lui affecter
-	une bordure, on peut écrire dans le fichier CSS :
-	#entete {border:1px solid yellow;}
-]
 <div id="page">
-
 	<div id="entete">
-		<INCLURE{fond=inclure/entete} />
+		#INCLURE{fond=inclure/entete}
 	</div>
 	
 	<div id="conteneur">	
 		<div id="contenu">
-			<INCLURE{fond=contenu/#ENV{type}}{env} />
+			#INCLURE{fond=contenu/#ENV{type},env}
 		</div>
 
 		<div id="navigation">
-			<INCLURE{fond=navigation/#ENV{type}}{env} />
-			<INCLURE{fond=extra/#ENV{type}}{env} />
+			#INCLURE{fond=navigation/#ENV{type},env}
+			#INCLURE{fond=extra/#ENV{type},env}
 		</div>
 	</div>
 
 	<div id="pied">
-		<INCLURE{fond=inclure/pied} />
+		#INCLURE{fond=inclure/pied}
 	</div>
 	
 	[(#REM)

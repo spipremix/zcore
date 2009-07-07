@@ -1,42 +1,10 @@
-[(#REM)
-
-	Ce fichier décrit la structure de la page HTML
-	Il commence donc par indiquer le "doctype" qui sert à
-	préciser au navigateur quel langage est utilisé ici.
-
-	L'exemple est un XHTML Transitional, mais le code du squelette Zesty
-	est écrit en XHTML Strict. Si vos rédacteurs écrivent des articles
-	en utilisant les raccourcis SPIP, sans écrire directement de code HTML
-	dans les textes, vous pouvez passer sans crainte en XHTML Strict...
-	Vous pourrez ainsi épater vos amis si vous trouvez cela si important !
-
-	La seconde ligne <html ... > est le début du code XHTML de la page.
-	On indique ici la langue principale et le sens d'écriture de cette langue
-	par les balises #LANG et #LANG_DIR.
-]
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
 <head>
-[(#REM)
-	Dans le <head> nous écrivons toutes les informations
-	invisibles de la page. C'est ici que vont s'ajouter
-	le titre de la page et son descriptif pour les moteurs de recherche.
-	C'est ici aussi que l'on indique les liens vers les fichiers de mise
-	en page CSS.
-
-	Nous incluons ici 2 squelettes. Un spécifique au type de page en cours
-	que l'on avait passé avec {type=sommaire}, variable que l'on
-	récupère avec #ENV{type}.
-
-	Ainsi, pour la page sommaire, on inclue la page pages/inc/head.html
-	Puis le fichier pages/head/sommaire.html
-
-	Voir ces fichiers pour des précisions sur leur contenu.
-]
-<INCLURE{fond=inclure/head} />
-<INCLURE{fond=head/#ENV{type}}{env} />
+#INCLURE{fond=inclure/head}
+#INCLURE{fond=head/#ENV{type},env}
 </head>
 <body class="page_#ENV{type,page}[ #ENV{type,page}_(#ENV{composition,''})]">
-<INCLURE{fond=body-layout}{env}>
+#INCLURE{fond=body-layout,env}
 </body>
 </html>

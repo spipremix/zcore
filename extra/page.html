@@ -1,6 +1,6 @@
-#SET{perso,#CHEMIN{extra/page-#ENV{composition}}}
+#SET{perso,#CHEMIN{extra/page-#ENV{composition}|concat{.html}}}
 [(#GET{perso}|oui)
-#INCLURE{fond=extra/page-#ENV{composition}}{env}
+#INCLURE{fond=extra/page-#ENV{composition},env}
 ][(#GET{perso}|non)
 
 [(#REM) Inscription au site ]

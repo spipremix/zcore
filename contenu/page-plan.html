@@ -1,6 +1,6 @@
       
 [(#REM) Fil d'Ariane ]
-<div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <strong class="on"><:plan_site:></strong></div>
+<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <strong class="on"><:plan_site:></strong></p>
 
 <div class="cartouche">
 	<h1><:plan_site:></h1>
@@ -13,7 +13,7 @@
 	[(#REM) Articles et sous-rubriques ]
 	<B_articles_racine>
 	<h3><:articles:></h3>
-	<ul>
+	<ul class="plan">
 		<BOUCLE_articles_racine(ARTICLES) {id_rubrique} {par titre}>
 		<li><a href="#URL_ARTICLE">#TITRE</a></li>
 		</BOUCLE_articles_racine>
@@ -21,7 +21,7 @@
 	</B_articles_racine>
 
 	<B_rubriques>
-	<ul>
+	<ul class="plan">
 		<BOUCLE_rubriques(RUBRIQUES) {id_parent} {par titre}>
 		<li>
 			<strong><a href="#URL_RUBRIQUE">#TITRE</a></strong>

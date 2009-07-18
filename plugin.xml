@@ -9,6 +9,7 @@
 	de [->http://www.spip-contrib.net/Themes]
 	</description>
 	<prefix>Z</prefix>
+	<fonctions>z_pipelines.php</fonctions>
 	<pipeline>
 		<nom>styliser</nom>
 		<inclure>z_pipelines.php</inclure>

@@ -1,5 +1,5 @@
 [(#REM) Fil d'Ariane ]
-<div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a>
+<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a>
 
     <BOUCLE_contexte_article(ARTICLES) {id_article}>
     <BOUCLE_ariane_article(HIERARCHIE) {id_article}>
@@ -41,7 +41,7 @@
 
     &gt; <strong class="on"><:poster_message:></strong>
     
-</div><!--#hierarchie-->
+</p><!--#hierarchie-->
 
 <div class="cartouche">
     <h1><:poster_message:></h1>
@@ -52,21 +52,21 @@
 
     <BOUCLE_forum_parent(FORUMS) {id_forum}>
     <h3><a href="#URL_FORUM">#TITRE</a></h3>
-    <small>[(#DATE|affdate_jourcourt)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> (#NOM)]</small>
+    <p class="small">[(#DATE|affdate_jourcourt)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> (#NOM)]</p>
     [<div class="introduction">(#INTRODUCTION|lignes_longues)</div>]
     </BOUCLE_forum_parent>
     
     <BOUCLE_article(ARTICLES) {id_article}>
     [(#LOGO_ARTICLE||image_reduire{150,100})]
     <h3><a href="#URL_ARTICLE">#TITRE</a></h3>
-    <small>[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</small>
+    <p class="small">[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</p>
     [<div class="introduction">(#INTRODUCTION)</div>]
     </BOUCLE_article>
     
     <BOUCLE_breve(BREVES) {id_breve}>
     [(#LOGO_BREVE||image_reduire{150,100})]
     <h3><a href="#URL_BREVE">#TITRE</a></h3>
-    <small>[(#DATE|affdate_jourcourt)]</small>
+    <p class="small">[(#DATE|affdate_jourcourt)]</p>
     [<div class="introduction">(#INTRODUCTION)</div>]
     </BOUCLE_breve>
     

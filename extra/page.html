@@ -1,10 +1,2 @@
-#SET{perso,#CHEMIN{extra/page-#ENV{composition}|concat{.html}}}
-[(#GET{perso}|oui)
-#INCLURE{fond=extra/page-#ENV{composition},env}
-][(#GET{perso}|non)
-
-[(#REM) Inscription au site ]
-#FORMULAIRE_INSCRIPTION
-
-]
-
+#SET{composition,#CHEMIN{extra/page-#ENV{composition}|concat{.html}}|?{#ENV{composition},page}}
+#INCLURE{fond=extra/page-#GET{composition},env}

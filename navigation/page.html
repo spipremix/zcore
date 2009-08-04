@@ -1,1 +1,2 @@
-<INCLURE{fond=navigation/rubrique}{env}>
+#SET{composition,#CHEMIN{navigation/page-#ENV{composition}|concat{.html}}|?{#ENV{composition},page}}
+#INCLURE{fond=navigation/page-#GET{composition},env}

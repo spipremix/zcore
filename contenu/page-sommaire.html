@@ -3,7 +3,7 @@
 	<h1 class="invisible">#NOM_SITE_SPIP</h1>
 </div>
 
-[<div class="chapo">(#DESCRIPTIF_SITE_SPIP)</div>]
+[<div id="descriptif_site_spip">(#DESCRIPTIF_SITE_SPIP)</div>]
 
 <B_articles>
 <div class="liste articles">
@@ -12,7 +12,7 @@
 	<ul class="liste-items">
 		<BOUCLE_articles(ARTICLES) {!par date} {pagination 5}>
 		<li class="item">
-			<div class="small">[(#DATE|affdate_jourcourt)]</div>
+			<div class="post-info">[(#DATE|affdate_jourcourt)]</div>
 			<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
 			[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 			[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]

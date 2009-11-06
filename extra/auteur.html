@@ -1,12 +1,12 @@
 <BOUCLE_extra_auteur(AUTEURS){id_auteur}>
 	[(#REM) Autres auteurs ]
 	<B_auteurs>
-	<div class="menu">
+	<div class="liste">
 		#ANCRE_PAGINATION
 		<h2><:info_auteurs:></h2>
-		<ul>
+		<ul class="liste-items">
 			<BOUCLE_auteurs(AUTEURS) {par nom} {pagination 20}>
-			<li><a href="#URL_AUTEUR"[ class="(#EXPOSE)"]>[(#NOM|couper{80})]</a></li>
+			<li class="item"><a href="#URL_AUTEUR"[ class="(#EXPOSE)"]>[(#NOM|couper{80})]</a></li>
 			</BOUCLE_auteurs>
 		</ul>
 		[<p class="pagination">(#PAGINATION)</p>]

@@ -15,12 +15,12 @@
 
 	[(#REM) Articles de l'auteur ]
 	<B_articles>
-	<div class="menu articles">
+	<div class="liste articles">
 		#ANCRE_PAGINATION
 		<h2><:articles_auteur:> (#GRAND_TOTAL)</h2>
-		<ul>
+		<ul class="liste-items">
 			<BOUCLE_articles(ARTICLES) {id_auteur} {!par popularite} {pagination 10}>
-			<li><a href="#URL_ARTICLE">#TITRE</a></li>
+			<li class="item"><a href="#URL_ARTICLE">#TITRE</a></li>
 			</BOUCLE_articles>
 		</ul>
 		[<p class="pagination">(#PAGINATION)</p>]

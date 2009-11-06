@@ -51,7 +51,7 @@ blockquote.spip {} /* Cf.: spip_style.css */
 blockquote.spip_poesie {} /* Cf.: spip_style.css */
 /* Cf.: spip_style.css */
 .spip_code {color:#f63;}
-.spip_cadre {color:#444; background-color: #fff; border: 1px solid #ddd; font-size:1em; padding:0.5em; }
+.spip_cadre {color:#444; background-color: #fff; border: 1px solid #ddd; font-size:1em; padding:0.5em;width:90%; }
 address {}
 
 /* Tableaux */

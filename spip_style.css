@@ -5,7 +5,7 @@
 
 
 /* Intertitre */
-h3.spip { text-align: center; margin-top: 2em; margin-bottom: 1.4em; font-size: 1.15em; font-weight: bold; }
+h3.spip { /* text-align: center; margin-top: 2em; margin-bottom: 1.4em; font-size: 1.15em; font-weight: bold;*/ }
 hr.spip { margin: 2em auto; }
 
 /* Listes SPIP */
@@ -55,3 +55,5 @@ a.spip_url { color: #009; } /* liens url sortants */
 a.spip_glossaire { color: #060;  } /* liens vers encyclopedie */
 a.spip_glossaire:hover { text-decoration: underline overline; }
 .on { font-weight: bold; } /* liens exposes */
+
+.small {font-size:90%;}

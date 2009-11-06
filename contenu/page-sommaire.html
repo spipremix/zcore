@@ -6,13 +6,13 @@
 [<div class="chapo">(#DESCRIPTIF_SITE_SPIP)</div>]
 
 <B_articles>
-<div class="menu articles">
+<div class="liste articles">
 	#ANCRE_PAGINATION
 	<h2><:derniers_articles:></h2>
-	<ul>
+	<ul class="liste-items">
 		<BOUCLE_articles(ARTICLES) {!par date} {pagination 5}>
-		<li>
-			<small>[(#DATE|affdate_jourcourt)]</small>
+		<li class="item">
+			<div class="small">[(#DATE|affdate_jourcourt)]</div>
 			<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
 			[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 			[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]

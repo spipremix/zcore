@@ -5,19 +5,19 @@
 	<div class="cartouche">
 		[(#LOGO_RUBRIQUE||image_reduire{200,200})]
 		<h1 class="#EDIT{titre}">#TITRE</h1>
-		[<p><small><:dernier_ajout:> : (#DATE|affdate_jourcourt).</small></p>]
+		[<p class="small"><:dernier_ajout:> : (#DATE|affdate_jourcourt).</p>]
 	</div>
 
 	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
 
 	<B_articles>
-	<div class="menu articles">
+	<div class="liste articles">
 		#ANCRE_PAGINATION
 		<h2><:articles_rubrique:></h2>
-		<ul>
+		<ul class="liste-items">
 			<BOUCLE_articles(ARTICLES){id_rubrique} {!par date} {pagination 5}>
-			<li>
-				<small>[(#DATE|affdate_jourcourt)]</small>
+			<li class="item">
+				<div class="small">[(#DATE|affdate_jourcourt)]</div>
 				<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
 				[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 				[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
@@ -32,16 +32,16 @@
 		<B_sous_rubriques>
 		<div class="menu rubriques">
 			<h2><:sous_rubriques:></h2>
-			<ul>
+			<ul class="menu-liste">
 				<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
-				<li>
+				<li class="menu-entree">
 					<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
 
 					[(#REM) Une boucle recursive pour le mini plan]
 					<B_miniplan>
-					<ul>
+					<ul class="menu-liste">
 						<BOUCLE_miniplan(RUBRIQUES) {id_parent} {par num titre, titre}>
-						<li>
+						<li class="menu-entree">
 							<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
 							<BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
 						</li>
@@ -61,12 +61,12 @@
 
 	[(#REM) Breves du secteur ]
 	<B_breves>
-	<div class="menu">
+	<div class="liste">
 			#ANCRE_PAGINATION
 			<h2><:breves:></h2>
-			<ul>
+			<ul class="liste-items">
 					<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
-					<li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE">#TITRE</a></li>
+					<li class="item">[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE">#TITRE</a></li>
 					</BOUCLE_breves>
 			</ul>
 			[<p class="pagination">(#PAGINATION)</p>]
@@ -75,11 +75,11 @@
 
 	[(#REM) Sites de la rubrique ]
 	<B_sites>
-	<div class="menu">
+	<div class="liste">
 			<h2><:sur_web:></h2>
-			<ul>
+			<ul class="liste-items">
 					<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
-					<li>
+					<li class="item">
 		<a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]">#NOM_SITE</a>
 							<B_syndic>
 							<ul>

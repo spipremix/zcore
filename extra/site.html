@@ -1,11 +1,11 @@
 [(#REM) Autres sites web ]
 <B_sites>
-<div class="menu">
+<div class="liste">
     #ANCRE_PAGINATION
     <h2><:sites_web:></h2>
-    <ul>
+    <ul class="liste-items">
         <BOUCLE_sites(SITES) {par nom_site} {pagination 20}>
-        <li><a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]"[ class="(#EXPOSE)"]>#NOM_SITE</a></li>
+        <li class="item"><a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]"[ class="(#EXPOSE)"]>#NOM_SITE</a></li>
         </BOUCLE_sites>
     </ul>
     [<p class="pagination">(#PAGINATION)</p>]
@@ -14,11 +14,11 @@
 
 [(#REM) Menu de navigation mots-cles ]
 <B_mots>
-<div class="menu">
+<div class="liste">
     <h2><:mots_clefs:></h2>
-    <ul>
+    <ul class="liste-items">
         <BOUCLE_mots(MOTS) {id_syndic} {par titre}>
-        <li><a href="#URL_MOT" rel="tag">#TITRE</a></li>
+        <li class="item"><a href="#URL_MOT" rel="tag">#TITRE</a></li>
         </BOUCLE_mots>
     </ul>
 </div>

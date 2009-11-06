@@ -9,12 +9,12 @@
 
 [(#REM) Articles trouves ]
 <B_articles>
-<div class="menu articles">
+<div class="liste articles">
 	#ANCRE_PAGINATION
 	<h2><:articles:> (#GRAND_TOTAL)</h2>
-	<ul>
+	<ul class="liste-items">
 		<BOUCLE_articles(ARTICLES) {recherche} {par points}{inverse} {pagination}>
-		<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		<li class="item"><a href="#URL_ARTICLE">#TITRE</a></li>
 		</BOUCLE_articles>
 	</ul>
 	[<p class="pagination">(#PAGINATION)</p>]
@@ -23,12 +23,12 @@
 
 [(#REM) Rubriques trouvees ]
 <B_rubriques>
-<div class="menu rubriques">
+<div class="liste rubriques">
 	#ANCRE_PAGINATION
 	<h2><:rubriques:> (#GRAND_TOTAL)</h2>
-	<ul>
+	<ul class="liste-items">
 		<BOUCLE_rubriques(RUBRIQUES) {recherche} {par points}{inverse} {pagination 5}>
-		<li><a href="#URL_RUBRIQUE">#TITRE</a></li>
+		<li class="item"><a href="#URL_RUBRIQUE">#TITRE</a></li>
 		</BOUCLE_rubriques>
 	</ul>
 	[<p class="pagination">(#PAGINATION)</p>]

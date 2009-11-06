@@ -12,15 +12,15 @@
 
   [(#REM) Articles issus de la syndication ]
   <B_articles>
-  <div class="menu articles">
+  <div class="liste articles">
       #ANCRE_PAGINATION
       <h2><:articles:></h2>
-      <ul>
+      <ul class="liste-items">
           <BOUCLE_articles(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {pagination 5}>
-          <li>
+          <li class="item">
               <h3><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></h3>
               [<div class="enclosures">(#TAGS|afficher_enclosures)</div>]
-              <small>[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)][ &mdash; <em>(#TAGS|afficher_tags)</em>]</small>
+              <div class="small">[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)][ &mdash; <em>(#TAGS|afficher_tags)</em>]</div>
               [<div class="introduction">(#DESCRIPTIF|image_reduire{300})</div>]
           </li>
           </BOUCLE_articles>

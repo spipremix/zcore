@@ -57,3 +57,9 @@ a.spip_glossaire:hover { text-decoration: underline overline; }
 .on { font-weight: bold; } /* liens exposes */
 
 .small {font-size:90%;}
+
+/* Espaceur de blocs */
+.nettoyeur { clear: both; height: 0; margin: 0; padding: 0; border: 0; line-height: 1px; font-size: 1px; }
+
+/* Non visible a l'ecran */
+.invisible { position: absolute; top: -3000em; height: 1%; }

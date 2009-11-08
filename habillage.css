@@ -151,9 +151,6 @@ body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
 .rubriques ul { border: 0; }
 .rubriques ul li { background: #EEE; border: 0; }
 */
-/* formulaire recherche */
-#formulaire_recherche {position:absolute; top: 0.5em; right:2em;}
-#formulaire_recherche label{display:none;}
 
 
 /* Listes d'articles et extraits introductifs */
@@ -264,7 +261,7 @@ table.spip_barre input.barre { width: 99%; background: transparent; border: 0; }
 .formulaire_forum .saisie_titre input.text, .formulaire_forum .saisie_titre textarea { width: 98%; }
 
 /* Selection des langues */
-.formulaire_menu_lang { margin: 0; padding: 0; background: none; }
+.formulaire_menu_lang { padding: 0; background: none; }
 
 /* Formulaires de recherche (site / petitions) */
 .formulaire_recherche { margin: 0; padding: 0; background: none; }

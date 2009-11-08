@@ -12,6 +12,12 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
+/**
+ * Fonction Page automatique a partir de contenu/page-xx
+ *
+ * @param array $flux
+ * @return array
+ */
 function Z_styliser($flux){
 
 	$squelette = $flux['data'];
@@ -27,6 +33,29 @@ function Z_styliser($flux){
 
 	return $flux;
 
+}
+
+/**
+ * Surcharger les intertires avant que le core ne les utilise
+ * pour y mettre la class h3
+ * une seule fois suffit !
+ *
+ * @param string $flux
+ * @return string
+ */
+function Z_pre_propre($flux){
+	static $init = false;
+	if (!$init){
+		$intertitre = $GLOBALS['debut_intertitre'];
+		$class = extraire_attribut($GLOBALS['debut_intertitre'],'class');
+		$class = ($class ? " $class":"");
+		$GLOBALS['debut_intertitre'] = inserer_attribut($GLOBALS['debut_intertitre'], 'class', "h3$class");
+		foreach($GLOBALS['spip_raccourcis_typo'] as $k=>$v){
+			$GLOBALS['spip_raccourcis_typo'][$k] = str_replace($intertitre,$GLOBALS['debut_intertitre'],$GLOBALS['spip_raccourcis_typo'][$k]);
+		}
+		$init = true;
+	}
+	return $flux;
 }
 
 

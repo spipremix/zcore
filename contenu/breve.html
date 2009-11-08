@@ -4,13 +4,13 @@
 
   <div class="cartouche">
       [(#LOGO_BREVE||image_reduire{200,200})]
-      <h1 class="#EDIT{titre}">#TITRE</h1>
+      <h1 class="h1 #EDIT{titre}">#TITRE</h1>
       <p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr></p>
   </div>
   
   [<div class="#EDIT{texte} texte">(#TEXTE)</div>]
   [<p class="lien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
-  [<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+  [<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
   
   [(#REM) Forum de la breve
   NB : pour desactiver les forums de breve, supprimez simplement les lignes ci-dessous ]

@@ -15,4 +15,8 @@
 		<nom>styliser</nom>
 		<inclure>z_pipelines.php</inclure>
 	</pipeline>
+	<pipeline>
+		<nom>pre_propre</nom>
+		<inclure>z_pipelines.php</inclure>
+	</pipeline>
 </plugin>

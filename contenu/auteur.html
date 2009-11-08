@@ -6,7 +6,7 @@
 	<div class="vcard">[(#REM) microformat vcard]
 	<div class="cartouche">
 		[(#LOGO_AUTEUR||image_reduire{200,200})]
-		<h1 class="#EDIT{qui} fn">#NOM</h1>
+		<h1 class="h1 #EDIT{qui} fn">#NOM</h1>
 	</div>
 
 	[<div class="#EDIT{bio} texte note">(#BIO)</div>]
@@ -17,7 +17,7 @@
 	<B_articles>
 	<div class="liste articles">
 		#ANCRE_PAGINATION
-		<h2><:articles_auteur:> (#GRAND_TOTAL)</h2>
+		<h2 class="h2"><:articles_auteur:> (#GRAND_TOTAL)</h2>
 		<ul class="liste-items">
 			<BOUCLE_articles(ARTICLES) {id_auteur} {!par popularite} {pagination 10}>
 			<li class="item"><a href="#URL_ARTICLE">#TITRE</a></li>
@@ -29,6 +29,6 @@
 
 	#FORMULAIRE_ECRIRE_AUTEUR
 	
-	[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+	[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 
 </BOUCLE_contenu_auteur>

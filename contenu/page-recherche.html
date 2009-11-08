@@ -3,7 +3,7 @@
 <p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:info_rechercher:>[ &gt; <strong class="on">(#RECHERCHE)</strong>]</p>
 
 [<div class="cartouche">
-	<h1><:resultats_recherche:></h1>
+	<h1 class="h1"><:resultats_recherche:></h1>
 	<p class="soustitre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</p>
 </div>]
 
@@ -11,7 +11,7 @@
 <B_articles>
 <div class="liste articles">
 	#ANCRE_PAGINATION
-	<h2><:articles:> (#GRAND_TOTAL)</h2>
+	<h2 class="h2"><:articles:> (#GRAND_TOTAL)</h2>
 	<ul class="liste-items">
 		<BOUCLE_articles(ARTICLES) {recherche} {par points}{inverse} {pagination}>
 		<li class="item"><a href="#URL_ARTICLE">#TITRE</a></li>
@@ -25,7 +25,7 @@
 <B_rubriques>
 <div class="liste rubriques">
 	#ANCRE_PAGINATION
-	<h2><:rubriques:> (#GRAND_TOTAL)</h2>
+	<h2 class="h2"><:rubriques:> (#GRAND_TOTAL)</h2>
 	<ul class="liste-items">
 		<BOUCLE_rubriques(RUBRIQUES) {recherche} {par points}{inverse} {pagination 5}>
 		<li class="item"><a href="#URL_RUBRIQUE">#TITRE</a></li>

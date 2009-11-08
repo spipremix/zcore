@@ -4,7 +4,7 @@
 
 <div class="cartouche">
 	[(#LOGO_ARTICLE||image_reduire{200,200})]
-	<h1 class="#EDIT{titre}">#TITRE</h1>
+	<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 
 	<p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr>[, <span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</p>
 </div>
@@ -13,7 +13,7 @@
 [<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{500,0})</div>]
 
 [<div class="ps">
-	<h2><:info_ps:></h2>
+	<h2 class="h2"><:info_ps:></h2>
 	<div class="#EDIT{ps}">(#PS|image_reduire{500,0})</div>
 </div>]
 
@@ -25,7 +25,7 @@ La petition ayant une PAGINATION il faut absolument {env}
 et pourquoi pas ajax
 ][(#PETITION|oui)<INCLURE{fond=inclure/petition}{id_article}{env}{ajax}>]
 
-[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 
 [(#REM) Forum de l'article ]
 <a href="#forum" name="forum" id="forum"></a>

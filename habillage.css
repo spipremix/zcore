@@ -18,11 +18,13 @@ html { font-size: 100%; } /* Cf.: http://pompage.net/pompe/definir-des-tailles-d
 body { font-size: 0.8125em; font-family: "Luxi sans", "Lucida Grande", Lucida, "Lucida Sans Unicode", sans-serif; color: #333; }
 
 /* Titraille / Intertitres */
-h1,h2,h3,h4,h5,h6 { margin: 0; padding: 0; font-weight: normal; font-size: 1em; font-family: Georgia, Times, serif; }
-h1 { font-size: 1.70em; color: #000; }
-h2 { font-size: 1.40em; font-weight: normal; }
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6 { margin: 0; padding: 0; font-weight: normal; font-size: 1em; font-family: Georgia, Times, serif; }
+h1,.h1 { font-size: 1.70em; color: #000; }
+h2,.h2 { font-size: 1.40em; font-weight: normal; }
 h2, h2 a, h2 a:focus, h2 a:hover, h2 a:active { color: #003; }
-h3 { font-size: 1.20em; font-weight: bold; }
+.h2, .h2 a, .h2 a:focus, .h2 a:hover, .h2 a:active { color: #003; }
+h3,.h3 { font-size: 1.20em; font-weight: bold; }
 h3.spip {} /* Cf.: spip_style.css */
 hr.spip {} /* Cf.: spip_style.css */
 
@@ -138,7 +140,7 @@ body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
 #navigation .menu-liste {border-bottom:0;}
 #navigation .menu-liste .menu-entree {list-style:square; margin-left:15px; padding:0; color:#f63;}
 #navigation .menu-liste .menu-entree .menu-liste {margin-left:0;}
-#navigation .liste h2 {margin-top:1em;}
+#navigation .liste .h2 {margin-top:1em;}
 
 /* Pagination */
 .pagination { clear: both; text-align: right; font-size: 0.90em; color: #666; }
@@ -157,8 +159,8 @@ body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
 /* Listes d'articles et extraits introductifs */
 .liste-items {margin: 0; padding: 0; list-style: none; border-bottom:0;}
 .liste-items .item {list-style:square; margin-left:0; padding:2px 0; color:#f63;clear: both;overflow:hidden;}
-.liste-items .item h3 { margin: 0.30em 0; border-bottom:1px solid #5ac;}
-.liste-items .item h3 a:hover { text-decoration:none;}
+.liste-items .item .h3 { margin: 0.30em 0; border-bottom:1px solid #5ac;}
+.liste-items .item .h3 a:hover { text-decoration:none;}
 .liste-items .item .info-publi {  display:block; float:right; margin-top:0.6em;}
 
 .liste.articles .spip_logos { float: right; clear: right; margin: .8em 0 4px 16px; }

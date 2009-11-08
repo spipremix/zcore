@@ -4,7 +4,7 @@
 
 	<div class="cartouche">
 		[(#LOGO_RUBRIQUE||image_reduire{200,200})]
-		<h1 class="#EDIT{titre}">#TITRE</h1>
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 		[<p class="info-publi"><span class="published"><:dernier_ajout:> : (#DATE|affdate_jourcourt).</span></p>]
 	</div>
 
@@ -13,12 +13,12 @@
 	<B_articles>
 	<div class="liste articles">
 		#ANCRE_PAGINATION
-		<h2><:articles_rubrique:></h2>
+		<h2 class="h2"><:articles_rubrique:></h2>
 		<ul class="liste-items">
 			<BOUCLE_articles(ARTICLES){id_rubrique} {!par date} {pagination 5}>
 			<li class="item">
 				<div class="small">[(#DATE|affdate_jourcourt)]</div>
-				<h3><a href="#URL_ARTICLE">#TITRE</a></h3>
+				<h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
 				[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 				[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
 			</li>
@@ -31,7 +31,7 @@
 		[(#REM) Si aucun article, affiche un plan de la rubrique ]
 		<B_sous_rubriques>
 		<div class="menu rubriques">
-			<h2><:sous_rubriques:></h2>
+			<h2 class="h2"><:sous_rubriques:></h2>
 			<ul class="menu-liste">
 				<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
 				<li class="menu-entree">
@@ -63,7 +63,7 @@
 	<B_breves>
 	<div class="liste">
 			#ANCRE_PAGINATION
-			<h2><:breves:></h2>
+			<h2 class="h2"><:breves:></h2>
 			<ul class="liste-items">
 					<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
 					<li class="item">[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE">#TITRE</a></li>
@@ -76,7 +76,7 @@
 	[(#REM) Sites de la rubrique ]
 	<B_sites>
 	<div class="liste">
-			<h2><:sur_web:></h2>
+			<h2 class="h2"><:sur_web:></h2>
 			<ul class="liste-items">
 					<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
 					<li class="item">
@@ -97,5 +97,5 @@
 	[(#REM) Proposer un site ]
 	#FORMULAIRE_SITE
 
-	[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+	[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 </BOUCLE_contenu_rubrique>

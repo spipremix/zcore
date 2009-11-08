@@ -3,16 +3,16 @@
 <p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <strong class="on"><:plan_site:></strong></p>
 
 <div class="cartouche">
-	<h1><:plan_site:></h1>
+	<h1 class="h1"><:plan_site:></h1>
 </div>
 
 <BOUCLE_secteurs(RUBRIQUES) {racine} {par titre}>
 
-	<h2><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+	<h2 class="h2"><a href="#URL_RUBRIQUE">#TITRE</a></h2>
 
 	[(#REM) Articles et sous-rubriques ]
 	<B_articles_racine>
-	<h3><:articles:></h3>
+	<h3 class="h3"><:articles:></h3>
 	<ul class="plan">
 		<BOUCLE_articles_racine(ARTICLES) {id_rubrique} {par titre}>
 		<li><a href="#URL_ARTICLE">#TITRE</a></li>

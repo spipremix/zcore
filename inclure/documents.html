@@ -1,7 +1,7 @@
 [(#REM) Portfolio : album d'images ]
 <B_documents_portfolio>
 <div class="documents documents_portfolio">
-	<h2><:info_portfolio:></h2>
+	<h2 class="h2"><:info_portfolio:></h2>
 	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{vu=non}>[
 	<a href="(#URL_DOCUMENT)" type="#MIME_TYPE"[ title="(#TITRE|attribut_html|couper{80})"]>[(#FICHIER
 		|image_reduire{0,100}
@@ -17,7 +17,7 @@
 ]
 <B_documents_joints>
 	<div class="liste documents documents_joints">
-	<h2><:titre_documents_joints:></h2>
+	<h2 class="h2"><:titre_documents_joints:></h2>
 	<ul class="liste-items">
 		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>[
 		<li class="item">

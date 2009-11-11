@@ -12,8 +12,8 @@
 	<ul class="liste-items">
 		<BOUCLE_articles(ARTICLES) {!par date} {pagination 5}>
 		<li class="item">
-			<div class="info-publi">[(#DATE|affdate_jourcourt)]</div>
 			<h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
+			<div class="info-publi">[(#DATE|affdate_jourcourt)]</div>
 			[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 			[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
 		</li>

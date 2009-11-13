@@ -13,7 +13,7 @@
 		<BOUCLE_articles(ARTICLES) {!par date} {pagination 5}>
 		<li class="item">
 			<h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
-			<div class="info-publi">[(#DATE|affdate_jourcourt)]</div>
+			<div class="info-publi">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate)</abbr>][, <span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</div>
 			[(#LOGO_ARTICLE{#URL_ARTICLE}||image_reduire{150,100})]
 			[<div class="#EDIT{intro} introduction">(#INTRODUCTION)</div>]
 		</li>

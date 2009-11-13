@@ -57,10 +57,7 @@
     </BOUCLE_forum_parent>
     
     <BOUCLE_article(ARTICLES) {id_article}>
-    [(#LOGO_ARTICLE||image_reduire{150,100})]
-    <h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
-    <p class="small">[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</p>
-    [<div class="introduction">(#INTRODUCTION)</div>]
+		#INCLURE{fond=inclure/article-resume,id_article}
     </BOUCLE_article>
     
     <BOUCLE_breve(BREVES) {id_breve}>

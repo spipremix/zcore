@@ -11,15 +11,15 @@
 [(#REM) Lien vers le flux RSS du site ]
 [<link rel="alternate" type="application/rss+xml" title="<:syndiquer_site:>" href="(#URL_PAGE{backend})" />]
 
-[(#CHEMIN{inc-theme-head.html}|oui)
-#INCLURE{fond=inc-theme-head,env}
-]
-
 [(#REM) Feuille de style par defaut pour le code genere par SPIP ]
 [<link rel="stylesheet" href="(#CHEMIN{spip_style.css}|direction_css)" type="text/css" media="all" />]
 
 [(#REM) Feuille de style par defaut pour les formulaires de SPIP ]
 [<link rel="stylesheet" href="(#CHEMIN{spip_formulaires.css}|direction_css)" type="text/css" media="projection, screen, tv" />]
+
+[(#CHEMIN{inc-theme-head.html}|oui)
+#INCLURE{fond=inc-theme-head,env}
+]
 
 [(#REM) Feuille de style CSS pour l'affichage du site a l'ecran ]
 [<link rel="stylesheet" href="(#CHEMIN{habillage.css}|direction_css)" type="text/css" media="projection, screen, tv" />]

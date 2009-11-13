@@ -58,6 +58,12 @@ function Z_pre_propre($flux){
 	return $flux;
 }
 
+function Z_insert_head($flux){
+	if (find_in_path('inc-insert-head.html')){
+		$flux .= recuperer_fond('inc-insert-head',array());
+	}
+	return $flux;
+}
 
 //
 // fonction standard de calcul de la balise #INTRODUCTION

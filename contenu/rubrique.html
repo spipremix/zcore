@@ -2,13 +2,26 @@
 	[(#REM) Fil d'Ariane ]
 	<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
 
+	[(#REM) Affiché comme une colonne]
 	<div class="cartouche">
-		[(#LOGO_RUBRIQUE||image_reduire{200,200})]
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
-		[<p class="info-publi"><span class="published"><:dernier_ajout:> : (#DATE|affdate_jourcourt).</span></p>]
+		<div class="info-publi">
+            <div class="archive_feed">
+            	<a href="#URL_PAGE{backend,id_rubrique=#ID_RUBRIQUE}"><:rss_section:></a>           			
+            </div>
+            <div class="archive_number">
+            	<:category_count:> <BOUCLE_count(ARTICLES){id_rubrique} />[(#TOTAL_BOUCLE|>{1}|?{#TOTAL_BOUCLE&nbsp;<:billets:>,#TOTAL_BOUCLE&nbsp;<:billet:>})]<//B_count>
+            </div>
+		</div>
+		#DESCRIPTIF
 	</div>
 
-	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+	[<div id="latest_post_image">
+	(#LOGO_RUBRIQUE||largeur|>{540}|?{[(#LOGO_RUBRIQUE||image_reduire{540}|image_recadre{540,200,center}|inserer_attribut{'style',margin-left:0})],[(#LOGO_RUBRIQUE||image_reduire{540,200})]})
+	</div>]
+
+	[(#REM) On affiche le texte de la rubrique]
+	[<div class="#EDIT{texte} chapo">(#TEXTE|image_reduire{540,0})</div>]
 
 	<B_articles>
 	<div class="liste articles">

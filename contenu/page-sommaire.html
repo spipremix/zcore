@@ -2,9 +2,7 @@
 <div class="cartouche invisible">
 	<h1 class="h1 invisible">#NOM_SITE_SPIP</h1>
 </div>
-
-[<div id="descriptif_site_spip">(#DESCRIPTIF_SITE_SPIP)</div>]
-
+<!--
 <B_articles>
 <div class="liste articles sommaire">
 	#ANCRE_PAGINATION
@@ -17,3 +15,46 @@
 	[<p class="pagination">(#PAGINATION)</p>]
 </div>
 </B_articles>
+-->
+
+[(#REM) Dernier article ]
+<B_latest_post>				
+<div class="liste articles sommaire dernier">   <!-- start latest_post -->
+	<h2><:dernier_article:></h2>
+	<ul class="liste-items">
+	<BOUCLE_latest_post(ARTICLES) {par date}{inverse} {0,1}{doublons}>
+	<li class="item">
+	[<div class="latest_post_image">
+	(#LOGO_ARTICLE_RUBRIQUE||largeur|>{470}|?{[(#LOGO_ARTICLE_RUBRIQUE|#URL_ARTICLE|image_reduire{470}|image_recadre{470,175,center}|inserer_attribut{'style',float:left;margin-left:0})],[(#LOGO_ARTICLE_RUBRIQUE|#URL_ARTICLE|image_reduire{470,175})]})
+	</div>]
+	<h3 class="h3 #EDIT{titre}" id="post-#ID_ARTICLE"><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h3>
+	[<div class="#EDIT{intro}">(#INTRODUCTION)</div>]
+	<div class="info-publi">
+		<span class="suite"><a href="#URL_ARTICLE" rel="bookmark" title="#TITRE"><:continue_reading:></a></span>
+		<BOUCLE_messages0(FORUMS){id_article}{plat} />[<span class="commentaires"><a href="#URL_ARTICLE#forum">(#TOTAL_BOUCLE|>{1}|?{#TOTAL_BOUCLE&nbsp;<:comments:>,#TOTAL_BOUCLE&nbsp;<:comment:>})</a></span>]<//B_messages0>
+		<BOUCLE_parent(RUBRIQUES){id_rubrique}><span class="categorie"><a href="#URL_RUBRIQUE">#TITRE</a></span></BOUCLE_parent>
+	</li><!-- fin info-publi -->
+	</BOUCLE_latest_post>
+	</ul>
+</div>   <!-- end latest_post -->
+</B_latest_post>
+
+[(#REM) Article mis en avant par mot clé ]
+<B_home_featured>
+	<div id="featured">   <!-- start home_featured -->
+		<h2 class="h2"><:featured_post:></h2>
+		<ul class="liste-items">
+		<BOUCLE_home_featured(ARTICLES){par date}{inverse}{0,1}{doublons}{titre_mot=featured}>
+		<li class="item">
+			[<div class="spip_logos">
+			(#LOGO_ARTICLE_RUBRIQUE|#URL_ARTICLE|image_masque{img/featured/temp.png}|inserer_attribut{class,featured_home_img})				</div>]
+			<h3 class="h3 #EDIT{titre}"><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h3>
+			[<div class="feat_exc #EDIT{intro}">(#INTRODUCTION)</div>]
+		</li>
+		</BOUCLE_home_featured>
+	</div>   <!-- end home_featured -->
+</B_home_featured>
+
+[(#REM) Miste des brèves ]
+
+<INCLURE{fond=inclure/asides,env}{ajax}>

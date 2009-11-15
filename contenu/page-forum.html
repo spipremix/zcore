@@ -52,18 +52,20 @@
 
     <BOUCLE_forum_parent(FORUMS) {id_forum}>
     <h3 class="h3"><a href="#URL_FORUM">#TITRE</a></h3>
-    <p class="small">[(#DATE|affdate_jourcourt)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> (#NOM)]</p>
+		<div class="info-publi">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate_jourcourt)[&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="sep">, </span><span class="auteurs"><:par_auteur:> (#NOM)</span>]</div>
     [<div class="introduction">(#INTRODUCTION|lignes_longues)</div>]
     </BOUCLE_forum_parent>
     
     <BOUCLE_article(ARTICLES) {id_article}>
+		<ul class="liste-items">
 		#INCLURE{fond=inclure/article-resume,id_article}
+		</ul>
     </BOUCLE_article>
     
     <BOUCLE_breve(BREVES) {id_breve}>
     [(#LOGO_BREVE||image_reduire{150,100})]
     <h3 class="h3"><a href="#URL_BREVE">#TITRE</a></h3>
-    <p class="small">[(#DATE|affdate_jourcourt)]</p>
+		<div class="info-publi">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate_jourcourt)</abbr>]</div>
     [<div class="introduction">(#INTRODUCTION)</div>]
     </BOUCLE_breve>
     

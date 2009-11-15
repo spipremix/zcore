@@ -1,47 +1,27 @@
-[(#REM)On active le doublons sur le dernier article]
-<BOUCLE_latest_post(ARTICLES) {par date}{inverse} {0,1}{doublons}></BOUCLE_latest_post>
-
-[(#REM)On active le doublons sur l'article mis en avant par mot clé]
-<BOUCLE_home_featured(ARTICLES){par date}{inverse}{0,1}{doublons}{titre_mot=featured}></BOUCLE_home_featured>
-
-[(#REM) Derniers articles ]
-<B_articles_recents>
-<h2 class="h2"><:derniers_articles:></h2>
-	<ul class="liste-items">	
-	<BOUCLE_articles_recents(ARTICLES) {par date}{inverse}{0,5}{doublons}>
-		<li class="item">		
-			[<div class="spip_logos">
-			(#LOGO_ARTICLE_RUBRIQUE|#URL_ARTICLE|image_masque{img/thumbs/thumb.jpg}|inserer_attribut{class,thumb_home_img})
-			</div>]
-			<h3 class="h3" id="post-#ID_ARTICLE">
-				<a href="#URL_ARTICLE" rel="bookmark">#TITRE</a>
-			</h3>
-			<div class="info-publi">
-				<div class="published">
-					<abbr [ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)]</abbr>
-				</div>
-				[<div class="auteurs">
-					<:par_auteur:> (#LESAUTEURS)
-				</div>]
-			</div>
-		</li>
-	</BOUCLE_articles_recents>
-	</ul>
-</B_articles_recents>
-			
-<INCLURE{fond=inclure/ad_home,env}>
-
-[(#REM) Affiche le nuage si le plugin et actif, prend en compte la CFG ]
-
-[(#PLUGIN{nuage}|oui)
-    [(#CONFIG{themorningafter/noid_nuage}|oui)
-    [(#SET{notin, [(#CONFIG{themorningafter/noid_nuage}|implode{|})]})]
-]
-[<div id="nuage">
-	<h2 class="h2"><:browse:></h2>
-	(#MODELE{nuage}{notid=#GET{notin}})
-     </div>]
-]	
-
 [(#REM) Inscription au site ]
 #FORMULAIRE_INSCRIPTION
+
+[(#REM) Liens des forums ]
+<B_forums_liens>
+<div class="liste">
+	<h2 class="h2"><:derniers_commentaires:></h2>
+	<ul class="liste-items">
+		<BOUCLE_forums_liens(FORUMS?) {plat} {par date}{inverse} {0,8}>
+		<li class="item">[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{80})]</a></li>
+		</BOUCLE_forums_liens>
+	</ul>
+</div>
+</B_forums_liens>
+
+
+[(#REM) Sur le Web ]
+<B_syndic>
+<div class="liste">
+	<h2 class="h2"><:nouveautes_web:></h2>
+	<ul class="liste-items">
+		<BOUCLE_syndic(SYNDIC_ARTICLES) {age<180} {par date}{inverse} {0,6}>
+		<li class="item">[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_ARTICLE"[ title="(#NOM_SITE|attribut_html|couper{80})"] class="spip_out">#TITRE</a></li>
+		</BOUCLE_syndic>
+	</ul>
+</div>
+</B_syndic>

@@ -1,11 +1,13 @@
-<div id='nav'>
 <B_rubriques>
-	<ul>
-	<BOUCLE_rubriques(RUBRIQUES) {racine} {par num titre, titre}>
-		<li>
+<div id="nav">
+  <div class="menu-conteneur">
+	 <ul class="menu-liste">
+	 <BOUCLE_rubriques(RUBRIQUES) {racine} {par num titre, titre}>
+		<li class="menu-entree[ class=(#EXPOSE)]"">
 			<a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|couper{80})]</a>
 		</li>
-	</BOUCLE_rubriques>
-	</ul>
-</B_rubriques>
+	 </BOUCLE_rubriques>
+	 </ul>
+  </div>
 </div>
+</B_rubriques>

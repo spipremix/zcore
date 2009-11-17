@@ -3,7 +3,7 @@
 
 [(#REM) Liens des forums ]
 <B_forums_liens>
-<div class="liste">
+<div class="liste forums">
 	<h2 class="h2"><:derniers_commentaires:></h2>
 	<ul class="liste-items">
 		<BOUCLE_forums_liens(FORUMS?) {plat} {par date}{inverse} {0,8}>
@@ -16,7 +16,7 @@
 
 [(#REM) Sur le Web ]
 <B_syndic>
-<div class="liste">
+<div class="liste syndic_articles">
 	<h2 class="h2"><:nouveautes_web:></h2>
 	<ul class="liste-items">
 		<BOUCLE_syndic(SYNDIC_ARTICLES) {age<180} {par date}{inverse} {0,6}>

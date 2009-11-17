@@ -1,7 +1,7 @@
 <BOUCLE_extra_article(ARTICLES){id_article}>
 	[(#REM) Articles dans la meme rubrique ]
 	<B_articles_rubrique>
-	<div class="liste">
+	<div class="liste articles">
 		<h2 class="h2"><a href="#URL_RUBRIQUE"><:meme_rubrique:></a></h2>
 		<ul class="liste-items">
 			<BOUCLE_articles_rubrique(ARTICLES) {id_rubrique} {par date}{inverse} {0,10}>
@@ -13,7 +13,7 @@
 
   [(#REM) Menu de navigation mots-cles ]
   <B_mots>
-  <div class="liste">
+  <div class="liste mots">
       <h2 class="h2"><:mots_clefs:></h2>
       <ul class="liste-items">
       <BOUCLE_mots(MOTS) {id_article} {par titre}>

@@ -25,6 +25,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// M
 
 	// P
+	'personaliser_nav' => 'Personnaliser ce menu',
 
 	// R
 

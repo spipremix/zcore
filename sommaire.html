@@ -8,7 +8,7 @@
 	(article, rubrique, sommaire, ...),
 	nous choisissons d'inclure la structure de la page
 	avec une balise INCLURE. De cette façon, un seul fichier
-	décrit l'organisation des blocs de la page, le fichier layout.html.
+	décrit l'organisation des blocs de la page, le fichier structure.html.
 
 	Nous passons en argument via le critere {env}
 	tout ce qui arrive dans	l'environnement de SPIP,
@@ -17,9 +17,9 @@
 	Enfin, nous ajoutons une variable {type=sommaire} pour indiquer de
 	quel type de page il s'agit et afficher alors du contenu en conséquence.
 
-	Allez découvrir ce fameux fichier layout.html.
+	Allez découvrir ce fameux fichier structure.html.
 	
 ]
-<INCLURE{fond=layout}{env}{type=page}{composition=sommaire} />
+<INCLURE{fond=structure}{env}{type=page}{composition=sommaire} />
 
 

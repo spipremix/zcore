@@ -34,7 +34,7 @@
 
 	[(#REM) Afficher un moteur de recherche si plus de 30 signatures
 	ou s'il etait deja present au coup d'avant]
-	[(#ENV{recherche_signatures}|?{31,#_signatures:GRAND_TOTAL}|>{30}|oui)
+	[(#ENV{recherche_signatures}|?{31,#_signatures:GRAND_TOTAL}|>{3}|oui)
 	<div class="formulaire_spip formulaire_recherche" id="formulaire_recherche_signatures">
 		<form method='get' action='#SELF'><div>[(#SELF|form_hidden)]
 		<label for="recherche_signatures"><:info_rechercher:></label> <input type="text" class="text" size="10" name="recherche_signatures" id="recherche_signatures" style='font-style: italic;' value=" <:entree_signature:>"/> <input type="submit" class="submit" value="<:info_rechercher:>" />

@@ -260,6 +260,8 @@ table.spip_barre input.barre { width: 99%; background: transparent; border: 0; }
 
 /* Formulaire de forum */
 .formulaire_forum .saisie_titre input.text, .formulaire_forum .saisie_titre textarea { width: 98%; }
+.forum .ancre {float:left; margin-right:0.5em;}
+.forum .spip_logos {float:right; margin: 0 2px 4px 10px;}
 
 /* Selection des langues */
 .formulaire_menu_lang { padding: 0; background: none; }

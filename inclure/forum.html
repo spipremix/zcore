@@ -22,6 +22,7 @@ la premiere fois qu'un message est poste (cf. inc/invalideur). ]
 					[<span class="comment-author vcard">, <:par_auteur:> <strong class="fn n #EDIT{qui}">(#NOM)</strong></span>]
 				</div>
 				<div class="comment-content forum-texte">
+					#LOGO_AUTEUR
 					[<div class="#EDIT{texte} comment-texte">(#TEXTE|lignes_longues)</div>]
 					[<div class="comment-notes">(#NOTES|safehtml|lignes_longues)</div>]
 					[<p class="#EDIT{hyperlien} comment-external-link hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
@@ -50,6 +51,7 @@ la premiere fois qu'un message est poste (cf. inc/invalideur). ]
 							[<span class="comment-author vcard">, <:par_auteur:> <strong class="fn n #EDIT{qui}">(#NOM)</strong></span>]
 						</div>
 						<div class="comment-content forum-texte">
+							#LOGO_AUTEUR
 							[<div class="#EDIT{texte} comment-texte">(#TEXTE|lignes_longues)</div>]
 							[<div class="comment-notes">(#NOTES|safehtml|lignes_longues)</div>]
 							[<p class="#EDIT{hyperlien} comment-external-link hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]

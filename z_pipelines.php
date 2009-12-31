@@ -23,11 +23,20 @@ function Z_styliser($flux){
 	$squelette = $flux['data'];
 	if (!$squelette // non trouve !
 		AND $fond = $flux['args']['fond']
-		AND $ext = $flux['args']['ext']
-	  AND $flux['args']['contexte'][_SPIP_PAGE] == $fond) {
-		$base = "contenu/page-".$fond.".".$ext;
-		if ($base = find_in_path($base)){
-			$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
+		AND $ext = $flux['args']['ext']){
+	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
+			$base = "contenu/page-".$fond.".".$ext;
+			if ($base = find_in_path($base)){
+				$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
+			}
+		}
+		if (strncmp($fond, "navigation/", 11)==0
+		  AND find_in_path("contenu/".substr($fond,11).".$ext")){
+			$flux['data'] = substr(find_in_path("navigation/page-dist.$ext"), 0, - strlen(".$ext"));
+		}
+		if (strncmp($fond, "extra/", 6)==0
+			AND find_in_path("contenu/".substr($fond,6).".$ext")){
+			$flux['data'] = substr(find_in_path("extra/page-dist.$ext"), 0, - strlen(".$ext"));
 		}
 	}
 

@@ -23,5 +23,6 @@
 		<nom>pre_propre</nom>
 		<inclure>z_pipelines.php</inclure>
 	</pipeline>
+	<categorie>squelette</categorie>
 	<necessite id="SPIP" version="[2.0.10;]" />
 </plugin>

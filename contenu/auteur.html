@@ -1,8 +1,9 @@
 <BOUCLE_contenu_auteur(AUTEURS){id_auteur}>
     
-	[(#REM) Fil d'Ariane ]
-	<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:info_auteurs:>[ &gt; <strong class="on">(#NOM|couper{80})</strong>]</p>
+[(#REM) Fil d'Ariane ]
+<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:info_auteurs:>[ &gt; <strong class="on">(#NOM|couper{80})</strong>]</p>
 
+<div class="contenu-principal">
 	<div class="vcard">[(#REM) microformat vcard]
 	<div class="cartouche">
 		[(#LOGO_AUTEUR||image_reduire{200,200})]
@@ -27,8 +28,10 @@
 	</div>
 	</B_articles>
 
-	#FORMULAIRE_ECRIRE_AUTEUR
-	
-	[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
+</div>
+
+#FORMULAIRE_ECRIRE_AUTEUR
+
+[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 
 </BOUCLE_contenu_auteur>

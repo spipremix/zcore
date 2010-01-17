@@ -1,6 +1,8 @@
 <BOUCLE_principale(MOTS) {id_mot} {doublons}>
-  [(#REM) Fil d'Ariane ]
-  <p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:mots_clefs:><BOUCLE_ariane(GROUPES_MOTS){id_groupe}> &gt; [(#TITRE|couper{80})]</BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
+[(#REM) Fil d'Ariane ]
+<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <:mots_clefs:><BOUCLE_ariane(GROUPES_MOTS){id_groupe}> &gt; [(#TITRE|couper{80})]</BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
+
+<div class="contenu-principal">
 
   <div class="cartouche">
       [(#LOGO_MOT||image_reduire{200,200})]
@@ -72,6 +74,7 @@
       </ul>
   </div>
   </B_sites>
+</div>
 
-  [<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
+[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 </BOUCLE_principale>

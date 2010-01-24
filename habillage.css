@@ -134,6 +134,7 @@ body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
 .menu-liste .menu-entree { margin: 0.20em 0; padding: 0.20em;}
 .menu-liste .menu-entree .menu-liste { margin-left: 1em; border: 0; }
 .menu-liste .menu-entree .menu-entree { padding: 0; border: 0; }
+#nav .menu-liste .menu-entree {	display: inline;padding:0;margin:0 0 0 10px; }
 
 #navigation .menu {background:#fcfcfc; padding:0.5em; border: 1px solid #ddd;}
 #navigation .menu a {/*color:#666;*/} /* ne pas utiliser de selecteur trop precis, et eviter de toucher aux liens */

@@ -25,24 +25,118 @@ function Z_styliser($flux){
 		AND $fond = $flux['args']['fond']
 		AND $ext = $flux['args']['ext']){
 	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
-			$base = "contenu/page-".$fond.".".$ext;
-			if ($base = find_in_path($base)){
-				$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
+			// si c'est un objet spip, associe a une table, utiliser le fond homonyme
+			$trouver_table = charger_fonction('trouver_table','base');
+			if ($trouver_table(table_objet($fond)) OR $trouver_table("spip_".table_objet($fond))){
+				$flux['data'] = substr(find_in_path("objet.$ext"), 0, - strlen(".$ext"));
+			}
+			else {
+				$base = "contenu/page-".$fond.".".$ext;
+				if ($base = find_in_path($base)){
+					$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
+				}
 			}
 		}
-		if (strncmp($fond, "navigation/", 11)==0
-		  AND find_in_path("contenu/".substr($fond,11).".$ext")){
-			$flux['data'] = substr(find_in_path("navigation/page-dist.$ext"), 0, - strlen(".$ext"));
+		// scaffolding :
+		// si c'est un fond de contenu d'un objet spip
+		// generer un fond automatique a la volee pour les webmestres
+		elseif (strncmp($fond, "contenu/", 8)==0
+			AND autoriser('webmestre')){
+			$type = substr($fond,8);
+			if ($is = z_scaffoldable($type))
+				$flux['data'] = z_scaffolding($type,$is[0],$is[1],$is[2],$ext);
 		}
-		if (strncmp($fond, "extra/", 6)==0
-			AND find_in_path("contenu/".substr($fond,6).".$ext")){
-			$flux['data'] = substr(find_in_path("extra/page-dist.$ext"), 0, - strlen(".$ext"));
+		elseif (strncmp($fond, "navigation/", 11)==0){
+			$type = substr($fond,11);
+		  if (find_in_path("contenu/$type.$ext") OR z_scaffoldable($type))
+				$flux['data'] = substr(find_in_path("navigation/dist.$ext"), 0, - strlen(".$ext"));
+		}
+		elseif (strncmp($fond, "extra/", 6)==0){
+			if (find_in_path("contenu/$type.$ext") OR z_scaffoldable($type))
+			$flux['data'] = substr(find_in_path("extra/dist.$ext"), 0, - strlen(".$ext"));
 		}
 	}
 
 	return $flux;
 
 }
+
+function z_scaffoldable($type){
+	if ($table = table_objet($type)
+	AND $trouver_table = charger_fonction('trouver_table','base')
+	AND
+		($desc = $trouver_table($table_sql = table_objet_sql($type))
+		OR $desc = $trouver_table($table_sql = "spip_$table"))
+		)
+		return array($table,$table_sql,$desc);
+	else
+		return false;
+}
+function z_scaffolding($type,$table,$table_sql,$desc,$ext){
+	include_spip('public/interfaces');
+	$primary = id_table_objet($type);
+	if (!$primary AND isset($desc['key']["PRIMARY KEY"])){
+		$primary = $desc['key']["PRIMARY KEY"];
+	}
+
+	// reperer un titre
+	$titre = 'titre';
+	if (isset($GLOBALS['table_titre'][$table])){
+		$titre = explode(' ',$GLOBALS['table_titre'][$table]);
+		$titre = explode(',',reset($titre));
+		$titre = reset($titre);
+	}
+	if (isset($desc['field'][$titre])){
+		unset($desc['field'][$titre]);
+		$titre="<h1 class='h1 #EDIT{titre}'>#".strtoupper($titre)."</h1>";
+	}
+	else $titre="";
+
+	// reperer une date
+	$date = "date";
+	if (isset($GLOBALS['table_date'][$table]))
+		$date = $GLOBALS['table_date'][$table];
+	if (isset($desc['field'][$date])){
+		unset($desc['field'][$date]);
+		$date = strtoupper($date);
+		$date="<p class='info-publi'>[(#$date|nom_jour) ][(#$date|affdate)][, <span class='auteurs'><:par_auteur:> (#LESAUTEURS)</span>]</p>";
+	}
+	else $date = "";
+
+	$content = array();
+	foreach($desc['field'] as $champ=>$z){
+		if (!in_array($champ,array('maj','statut','idx',$primary))){
+			$content[] = "[<div class='#EDIT{".$champ."} $champ'>(#".strtoupper($champ)."|image_reduire{500,0})</div>]";
+		}
+	}
+	$content = implode("\n\t",$content);
+
+	$scaffold = "#CACHE{0}
+<BOUCLE_contenu($table_sql){".$primary."}>
+[(#REM) Fil d'Ariane ]
+<p id='hierarchie'><a href='#URL_SITE_SPIP/'><:accueil_site:></a>[ &gt; <strong class='on'>(#TITRE|couper{80})</strong>]</p>
+
+<div class='contenu-principal'>
+	<div class='cartouche'>
+		$titre
+		$date
+	</div>
+
+	$content
+
+</div>
+
+[<div class='notes surlignable'><h2 class='h2 pas_surlignable'><:info_notes:></h2>(#NOTES)</div>]
+</BOUCLE_contenu>";
+
+	$dir = sous_repertoire(_DIR_CACHE,"scaffold",false);
+	$dir = sous_repertoire($dir,"contenu",false);
+	$f = $dir."$type";
+	ecrire_fichier("$f.$ext",$scaffold);
+	return $f;
+}
+
+
 
 /**
  * Surcharger les intertires avant que le core ne les utilise

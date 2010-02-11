@@ -26,8 +26,7 @@ function Z_styliser($flux){
 		AND $ext = $flux['args']['ext']){
 	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
 			// si c'est un objet spip, associe a une table, utiliser le fond homonyme
-			$trouver_table = charger_fonction('trouver_table','base');
-			if ($trouver_table(table_objet($fond)) OR $trouver_table("spip_".table_objet($fond))){
+			if (z_scaffoldable($fond)){
 				$flux['data'] = substr(find_in_path("objet.$ext"), 0, - strlen(".$ext"));
 			}
 			else {
@@ -41,6 +40,7 @@ function Z_styliser($flux){
 		// si c'est un fond de contenu d'un objet spip
 		// generer un fond automatique a la volee pour les webmestres
 		elseif (strncmp($fond, "contenu/", 8)==0
+			AND include_spip('inc/autoriser')
 			AND autoriser('webmestre')){
 			$type = substr($fond,8);
 			if ($is = z_scaffoldable($type))
@@ -63,8 +63,9 @@ function Z_styliser($flux){
 
 function z_scaffoldable($type){
 	if ($table = table_objet($type)
-	AND $trouver_table = charger_fonction('trouver_table','base')
-	AND
+	  AND $type == objet_type($table)
+	  AND $trouver_table = charger_fonction('trouver_table','base')
+	  AND
 		($desc = $trouver_table($table_sql = table_objet_sql($type))
 		OR $desc = $trouver_table($table_sql = "spip_$table"))
 		)

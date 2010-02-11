@@ -19,6 +19,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @return array
  */
 function Z_styliser($flux){
+	$dir_dist = array('navigation','extra','head');
 
 	$squelette = $flux['data'];
 	if (!$squelette // non trouve !
@@ -46,22 +47,24 @@ function Z_styliser($flux){
 			if ($is = z_scaffoldable($type))
 				$flux['data'] = z_scaffolding($type,$is[0],$is[1],$is[2],$ext);
 		}
-		elseif (strncmp($fond, "navigation/", 11)==0){
-			$type = substr($fond,11);
-		  if (find_in_path("contenu/$type.$ext") OR z_scaffoldable($type))
-				$flux['data'] = substr(find_in_path("navigation/dist.$ext"), 0, - strlen(".$ext"));
-		}
-		elseif (strncmp($fond, "extra/", 6)==0){
-			if (find_in_path("contenu/$type.$ext") OR z_scaffoldable($type))
-			$flux['data'] = substr(find_in_path("extra/dist.$ext"), 0, - strlen(".$ext"));
+		else{
+			if ( $dir = explode('/',$fond)
+				AND $dir = reset($dir)
+				AND in_array($dir,$dir_dist)){
+				$type = substr($fond,strlen("$dir/"));
+				if (find_in_path("contenu/$type.$ext") OR z_scaffoldable($type))
+					$flux['data'] = substr(find_in_path("$dir/dist.$ext"), 0, - strlen(".$ext"));
+			}
 		}
 	}
 
 	return $flux;
-
 }
 
 function z_scaffoldable($type){
+	static $scaffoldable = array();
+	if (isset($scaffoldable[$type]))
+		return $scaffoldable[$type];
 	if ($table = table_objet($type)
 	  AND $type == objet_type($table)
 	  AND $trouver_table = charger_fonction('trouver_table','base')
@@ -69,9 +72,9 @@ function z_scaffoldable($type){
 		($desc = $trouver_table($table_sql = table_objet_sql($type))
 		OR $desc = $trouver_table($table_sql = "spip_$table"))
 		)
-		return array($table,$table_sql,$desc);
+		return $scaffoldable[$type] = array($table,$table_sql,$desc);
 	else
-		return false;
+		return $scaffoldable[$type] = false;
 }
 function z_scaffolding($type,$table,$table_sql,$desc,$ext){
 	include_spip('public/interfaces');

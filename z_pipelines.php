@@ -25,7 +25,7 @@ function Z_styliser($flux){
 	if (!$squelette // non trouve !
 		AND $fond = $flux['args']['fond']
 		AND $ext = $flux['args']['ext']){
-	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
+		if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
 			// si c'est un objet spip, associe a une table, utiliser le fond homonyme
 			if (z_scaffoldable($fond)){
 				$flux['data'] = substr(find_in_path("objet.$ext"), 0, - strlen(".$ext"));
@@ -57,7 +57,14 @@ function Z_styliser($flux){
 			}
 		}
 	}
-
+	// chercher le fond correspondant a la composition
+	if (isset($flux['args']['contexte']['composition'])
+	  AND $fond = $flux['args']['fond']
+	  AND $ext = $flux['args']['ext']
+	  AND substr($flux['data'],-strlen($fond))==$fond
+	  AND $f=find_in_path($fond."-".$flux['args']['contexte']['composition'].".$ext")){
+		$flux['data'] = substr($f,0,-strlen(".$ext"));
+	}
 	return $flux;
 }
 

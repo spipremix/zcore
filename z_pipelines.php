@@ -19,40 +19,50 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @return array
  */
 function Z_styliser($flux){
-	$dir_dist = array('navigation','extra','head');
+	$z_blocs = isset($GLOBALS['z_blocs'])?$GLOBALS['z_blocs']:array('contenu','navigation','extra','head');
+	$contenu = array_shift($z_blocs); // contenu par defaut
 
 	$squelette = $flux['data'];
 	if (!$squelette // non trouve !
 		AND $fond = $flux['args']['fond']
 		AND $ext = $flux['args']['ext']){
-		if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
+
+		// si on est sur un ?page=XX non trouve
+	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
 			// si c'est un objet spip, associe a une table, utiliser le fond homonyme
 			if (z_scaffoldable($fond)){
 				$flux['data'] = substr(find_in_path("objet.$ext"), 0, - strlen(".$ext"));
 			}
+			// sinon, si brancher sur contenu/page-xx si elle existe
 			else {
-				$base = "contenu/page-".$fond.".".$ext;
+				$base = "$contenu/page-".$fond.".".$ext;
 				if ($base = find_in_path($base)){
 					$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
 				}
 			}
 		}
+
 		// scaffolding :
-		// si c'est un fond de contenu d'un objet spip
+		// si c'est un fond de contenu d'un objet en base
 		// generer un fond automatique a la volee pour les webmestres
-		elseif (strncmp($fond, "contenu/", 8)==0
+		elseif (strncmp($fond, "$contenu/", strlen($contenu)+1)==0
 			AND include_spip('inc/autoriser')
+			AND isset($GLOBALS['visiteur_session']['id_auteur']) // performance
 			AND autoriser('webmestre')){
-			$type = substr($fond,8);
+			$type = substr($fond,strlen($contenu)+1);
 			if ($is = z_scaffoldable($type))
 				$flux['data'] = z_scaffolding($type,$is[0],$is[1],$is[2],$ext);
 		}
+
+		// sinon, si on demande un fond non trouve dans un des autres blocs
+		// et si il y a bien un contenu correspondant ou scaffoldable
+		// se rabbatre sur le dist.html du bloc concerne
 		else{
 			if ( $dir = explode('/',$fond)
 				AND $dir = reset($dir)
-				AND in_array($dir,$dir_dist)){
+				AND in_array($dir,$z_blocs)){
 				$type = substr($fond,strlen("$dir/"));
-				if (find_in_path("contenu/$type.$ext") OR z_scaffoldable($type))
+				if (find_in_path("$contenu/$type.$ext") OR z_scaffoldable($type))
 					$flux['data'] = substr(find_in_path("$dir/dist.$ext"), 0, - strlen(".$ext"));
 			}
 		}
@@ -68,6 +78,14 @@ function Z_styliser($flux){
 	return $flux;
 }
 
+/**
+ * Tester si un type est scaffoldable
+ * cad si il correspond bien a un objet en base
+ * 
+ * @staticvar array $scaffoldable
+ * @param string $type
+ * @return bool
+ */
 function z_scaffoldable($type){
 	static $scaffoldable = array();
 	if (isset($scaffoldable[$type]))
@@ -83,6 +101,18 @@ function z_scaffoldable($type){
 	else
 		return $scaffoldable[$type] = false;
 }
+
+
+/**
+ * Generer a la volee un fond a partir d'une table de contenu
+ *
+ * @param string $type
+ * @param string $table
+ * @param string $table_sql
+ * @param array $desc
+ * @param string $ext
+ * @return string
+ */
 function z_scaffolding($type,$table,$table_sql,$desc,$ext){
 	include_spip('public/interfaces');
 	$primary = id_table_objet($type);
@@ -172,6 +202,12 @@ function Z_pre_propre($flux){
 	return $flux;
 }
 
+/**
+ * Ajouter le inc-insert-head du theme si il existe
+ *
+ * @param string $flux
+ * @return string
+ */
 function Z_insert_head($flux){
 	if (find_in_path('inc-insert-head.html')){
 		$flux .= recuperer_fond('inc-insert-head',array());
@@ -235,6 +271,18 @@ function filtre_introduction($descriptif, $texte, $longueur, $connect) {
 
 
 	return $texte;
+}
+
+/**
+ * Tester la presence sur une page
+ * @param <type> $p
+ * @return <type>
+ */
+function balise_SI_PAGE_dist($p) {
+	$_page = interprete_argument_balise(1,$p);
+	$p->code = "(((\$Pile[0][_SPIP_PAGE]==(\$zp=$_page)) OR (\$Pile[0]['composition']==\$zp AND \$Pile[0]['type']=='page'))?' ':'')";
+	$p->interdire_scripts = false;
+	return $p;
 }
 
 ?>

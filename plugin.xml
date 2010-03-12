@@ -5,9 +5,10 @@
 	<licence>GNU/GPL</licence>
 	<version>1.4.0</version>
 	<etat>stable</etat>
-	<description>
-	Un jeu de squelettes comme squelettes-dist/ de SPIP, mais qui peut utiliser les th&egrave;mes
-	de [->http://www.spip-contrib.net/Themes]
+	<description>Syst&egrave;me de squelette
+_ Un squelette comme <code>squelettes-dist/</code> de SPIP,
+avec une organisation et une modularit&eacute; optimis&eacute;e, 
+et qui permet d'utiliser les th&egrave;mes de [->http://www.spip-contrib.net/Themes]
 	</description>
 	<prefix>Z</prefix>
 	<fonctions>z_pipelines.php</fonctions>

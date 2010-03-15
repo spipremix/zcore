@@ -76,8 +76,18 @@ function Z_styliser($flux){
 		}
 		$squelette = $flux['data'];
 	}
+	if ($fond=='body' AND substr($squelette,-strlen($fond))==$fond){
+		if (isset($flux['args']['contexte']['type'])
+		  AND (
+				(isset($flux['args']['contexte']['composition'])
+				AND file_exists(($f=$squelette."-".$flux['args']['contexte']['type']."-".$flux['args']['contexte']['composition']).".$ext"))
+				OR
+				file_exists(($f=$squelette."-".$flux['args']['contexte']['type']).".$ext")
+				))
+			$flux['data'] = $f;
+	}
 	// chercher le fond correspondant a la composition
-	if (isset($flux['args']['contexte']['composition'])
+	elseif (isset($flux['args']['contexte']['composition'])
 	  AND substr($squelette,-strlen($fond))==$fond
 	  AND $dir = explode('/',$fond)
 	  AND $dir = reset($dir)

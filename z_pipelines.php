@@ -19,13 +19,20 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @return array
  */
 function Z_styliser($flux){
-	$z_blocs = isset($GLOBALS['z_blocs'])?$GLOBALS['z_blocs']:array('contenu','navigation','extra','head');
-	$contenu = array_shift($z_blocs); // contenu par defaut
+	static $z_blocs = null;
+	static $z_contenu = null;
+	if (is_null($z_blocs)){
+		$z_blocs = isset($GLOBALS['z_blocs'])?$GLOBALS['z_blocs']:array('contenu','navigation','extra','head');
+		$z_contenu = reset($z_blocs); // contenu par defaut
+	}
 
 	$squelette = $flux['data'];
-	if (!$squelette // non trouve !
-		AND $fond = $flux['args']['fond']
-		AND $ext = $flux['args']['ext']){
+	$fond = $flux['args']['fond'];
+	$ext = $flux['args']['ext'];
+	// gerer les squelettes non trouves
+	// -> router vers les /dist.html
+	// ou scaffolding ou page automatique les contenus
+	if (!$squelette){
 
 		// si on est sur un ?page=XX non trouve
 	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
@@ -33,9 +40,9 @@ function Z_styliser($flux){
 			if (z_scaffoldable($fond)){
 				$flux['data'] = substr(find_in_path("objet.$ext"), 0, - strlen(".$ext"));
 			}
-			// sinon, si brancher sur contenu/page-xx si elle existe
+			// sinon, brancher sur contenu/page-xx si elle existe
 			else {
-				$base = "$contenu/page-".$fond.".".$ext;
+				$base = "$z_contenu/page-".$fond.".".$ext;
 				if ($base = find_in_path($base)){
 					$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
 				}
@@ -45,11 +52,11 @@ function Z_styliser($flux){
 		// scaffolding :
 		// si c'est un fond de contenu d'un objet en base
 		// generer un fond automatique a la volee pour les webmestres
-		elseif (strncmp($fond, "$contenu/", strlen($contenu)+1)==0
+		elseif (strncmp($fond, "$z_contenu/", strlen($z_contenu)+1)==0
 			AND include_spip('inc/autoriser')
 			AND isset($GLOBALS['visiteur_session']['id_auteur']) // performance
 			AND autoriser('webmestre')){
-			$type = substr($fond,strlen($contenu)+1);
+			$type = substr($fond,strlen($z_contenu)+1);
 			if ($is = z_scaffoldable($type))
 				$flux['data'] = z_scaffolding($type,$is[0],$is[1],$is[2],$ext);
 		}
@@ -60,18 +67,21 @@ function Z_styliser($flux){
 		else{
 			if ( $dir = explode('/',$fond)
 				AND $dir = reset($dir)
+				AND $dir !== $z_contenu
 				AND in_array($dir,$z_blocs)){
 				$type = substr($fond,strlen("$dir/"));
-				if (find_in_path("$contenu/$type.$ext") OR z_scaffoldable($type))
+				if (find_in_path("$z_contenu/$type.$ext") OR z_scaffoldable($type))
 					$flux['data'] = substr(find_in_path("$dir/dist.$ext"), 0, - strlen(".$ext"));
 			}
 		}
+		$squelette = $flux['data'];
 	}
 	// chercher le fond correspondant a la composition
 	if (isset($flux['args']['contexte']['composition'])
-	  AND $fond = $flux['args']['fond']
-	  AND $ext = $flux['args']['ext']
-	  AND substr($flux['data'],-strlen($fond))==$fond
+	  AND substr($squelette,-strlen($fond))==$fond
+	  AND $dir = explode('/',$fond)
+	  AND $dir = reset($dir)
+		AND in_array($dir,$z_blocs)
 	  AND $f=find_in_path($fond."-".$flux['args']['contexte']['composition'].".$ext")){
 		$flux['data'] = substr($f,0,-strlen(".$ext"));
 	}
@@ -221,54 +231,12 @@ function Z_insert_head($flux){
 //
 // http://doc.spip.org/@filtre_introduction_dist
 function filtre_introduction($descriptif, $texte, $longueur, $connect) {
-	// Si un descriptif est envoye, on l'utilise directement
-	if (strlen($descriptif))
-		return propre($descriptif,$connect);
+	include_spip('public/composer');
+	$texte = filtre_introduction_dist($descriptif, $texte, $longueur, $connect);
 
-	// Prendre un extrait dans la bonne langue
-	$texte = extraire_multi($texte);
-
-	// De preference ce qui est marque <intro>...</intro>
-	$intro = '';
-	$texte = preg_replace(",(</?)intro>,i", "\\1intro>", $texte); // minuscules
-	while ($fin = strpos($texte, "</intro>")) {
-		$zone = substr($texte, 0, $fin);
-		$texte = substr($texte, $fin + strlen("</intro>"));
-		if ($deb = strpos($zone, "<intro>") OR substr($zone, 0, 7) == "<intro>")
-			$zone = substr($zone, $deb + 7);
-		$intro .= $zone;
-	}
-	$texte = $intro ? $intro : $texte;
-
-	// On ne *PEUT* pas couper simplement ici car c'est du texte brut, qui inclus raccourcis et modeles
-	// un simple <articlexx> peut etre ensuite transforme en 1000 lignes ...
-	// par ailleurs le nettoyage des raccourcis ne tient pas compte des surcharges
-	// et enrichissement de propre
-	// couper doit se faire apres propre
-	//$texte = nettoyer_raccourcis_typo($intro ? $intro : $texte, $connect);
-
-	// ne pas tenir compte des notes ;
-	// bug introduit en http://trac.rezo.net/trac/spip/changeset/12025
-	$mem = array($GLOBALS['les_notes'], $GLOBALS['compt_note'], $GLOBALS['marqueur_notes'], $GLOBALS['notes_vues']);
-	// memoriser l'etat de la pile unique
-	$mem_unique = unique('','_spip_raz_');
-
-
-	$texte = propre($texte,$connect);
-
-
-	// restituer les notes comme elles etaient avant d'appeler propre()
-	list($GLOBALS['les_notes'], $GLOBALS['compt_note'], $GLOBALS['marqueur_notes'], $GLOBALS['notes_vues']) = $mem;
-	// restituer l'etat de la pile unique
-	unique($mem_unique,'_spip_set_');
-
-
-	@define('_INTRODUCTION_SUITE', '&nbsp;(...)');
-	$texte = couper($texte, $longueur, _INTRODUCTION_SUITE);
-
-	// Fermer les paragraphes ; mais ne pas en creer si un seul
-	$texte = paragrapher($texte, $GLOBALS['toujours_paragrapher']);
-
+	if ($GLOBALS['toujours_paragrapher'] AND strpos($texte,"</p>")===FALSE)
+		// Fermer les paragraphes ; mais ne pas en creer si un seul
+		$texte = paragrapher($texte, $GLOBALS['toujours_paragrapher']);
 
 	return $texte;
 }

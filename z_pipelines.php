@@ -19,12 +19,8 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @return array
  */
 function Z_styliser($flux){
-	static $z_blocs = null;
-	static $z_contenu = null;
-	if (is_null($z_blocs)){
-		$z_blocs = isset($GLOBALS['z_blocs'])?$GLOBALS['z_blocs']:array('contenu','navigation','extra','head');
-		$z_contenu = reset($z_blocs); // contenu par defaut
-	}
+	$z_blocs = isset($GLOBALS['z_blocs'])?$GLOBALS['z_blocs']:array('contenu','navigation','extra','head');
+	$z_contenu = reset($z_blocs); // contenu par defaut
 
 	$squelette = $flux['data'];
 	$fond = $flux['args']['fond'];

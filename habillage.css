@@ -284,5 +284,6 @@ ul.choix_mots li label { display: inline; font-weight: normal; }
 
 /* Formulaire de login dans une page */
 .formulaire_login ul li {clear:left;}
+.formulaire_login ul li input.password { width: 15em; border: 1px inset; }
 .formulaire_login .editer_password .details {display:block;}
 .formulaire_login #spip_logo_auteur {float:right;}

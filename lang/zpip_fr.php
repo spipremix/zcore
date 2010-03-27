@@ -6,7 +6,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-
+	'adapte_de' => 'adapt&eacute; de',
 	// B
 
 	// C

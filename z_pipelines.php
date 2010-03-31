@@ -110,10 +110,10 @@ function z_scaffoldable($type){
 	  AND $type == objet_type($table)
 	  AND $trouver_table = charger_fonction('trouver_table','base')
 	  AND
-		($desc = $trouver_table($table_sql = table_objet_sql($type))
-		OR $desc = $trouver_table($table_sql = "spip_$table"))
+		($desc = $trouver_table($table)
+		OR $desc = $trouver_table($table_sql = $GLOBALS['table_prefix']."_$table"))
 		)
-		return $scaffoldable[$type] = array($table,$table_sql,$desc);
+		return $scaffoldable[$type] = array($table,$desc['table'],$desc);
 	else
 		return $scaffoldable[$type] = false;
 }

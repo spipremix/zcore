@@ -3,7 +3,7 @@
 	<auteur>Matthieu Marcillaud, C&eacute;dric Morin, Romy Tetue, Collectif SPIP</auteur>
 	<icon>img/zpip-128.png</icon>
 	<licence>GNU/GPL</licence>
-	<version>1.5.1</version>
+	<version>1.5.2</version>
 	<etat>stable</etat>
 	<description>Syst&egrave;me de squelette
 _ Un squelette comme <code>squelettes-dist/</code> de SPIP,
@@ -12,6 +12,10 @@ et qui permet d'utiliser les th&egrave;mes de [->http://www.spip-contrib.net/The
 	</description>
 	<prefix>Z</prefix>
 	<fonctions>z_pipelines.php</fonctions>
+	<pipeline>
+		<nom>declarer_url_objets</nom>
+		<inclure>z_pipelines.php</inclure>
+	</pipeline>
 	<pipeline>
 		<nom>styliser</nom>
 		<inclure>z_pipelines.php</inclure>

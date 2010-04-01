@@ -12,6 +12,19 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
+// demander a SPIP de definir 'type' dans le contexte du premier squelette
+define('_DEFINIR_CONTEXTE_TYPE',true);
+
+/**
+ * Inutilise mais permet le chargement de ce fichier avant le decodage des urls
+ * et l'utilisation de _DEFINIR_CONTEXTE_TYPE
+ * @param <type> $flux
+ * @return <type>
+ */
+function Z_declarer_url_objets($flux){
+	return $flux;
+}
+
 /**
  * Fonction Page automatique a partir de contenu/page-xx
  *
@@ -31,13 +44,14 @@ function Z_styliser($flux){
 	if (!$squelette){
 
 		// si on est sur un ?page=XX non trouve
-	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
+	  if ($flux['args']['contexte'][_SPIP_PAGE] == $fond OR $flux['args']['contexte']['type'] == $fond) {
 			// si c'est un objet spip, associe a une table, utiliser le fond homonyme
 			if (z_scaffoldable($fond)){
 				$flux['data'] = substr(find_in_path("objet.$ext"), 0, - strlen(".$ext"));
 			}
 			// sinon, brancher sur contenu/page-xx si elle existe
-			else {
+			// si on est sur un ?page=XX non trouve
+			elseif ($flux['args']['contexte'][_SPIP_PAGE] == $fond) {
 				$base = "$z_contenu/page-".$fond.".".$ext;
 				if ($base = find_in_path($base)){
 					$flux['data'] = substr(find_in_path("page.$ext"), 0, - strlen(".$ext"));
@@ -106,6 +120,8 @@ function z_scaffoldable($type){
 	static $scaffoldable = array();
 	if (isset($scaffoldable[$type]))
 		return $scaffoldable[$type];
+	if (preg_match(',[^\w],',$type))
+		return $scaffoldable[$type] = false;
 	if ($table = table_objet($type)
 	  AND $type == objet_type($table)
 	  AND $trouver_table = charger_fonction('trouver_table','base')
@@ -163,7 +179,7 @@ function z_scaffolding($type,$table,$table_sql,$desc,$ext){
 	$content = array();
 	foreach($desc['field'] as $champ=>$z){
 		if (!in_array($champ,array('maj','statut','idx',$primary))){
-			$content[] = "[<div class='#EDIT{".$champ."} $champ'>(#".strtoupper($champ)."|image_reduire{500,0})</div>]";
+			$content[] = "[<div><strong>$champ</strong><div class='#EDIT{".$champ."} $champ'>(#".strtoupper($champ)."|image_reduire{500,0})</div></div>]";
 		}
 	}
 	$content = implode("\n\t",$content);

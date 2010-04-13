@@ -19,7 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// I
 
 	// L
-	'lire_la_suite' => 'weiterlesen',
+	'lire_la_suite' => 'Ganzer Text',
 	'lire_la_suite_de' => ' von ',
 
 	// M

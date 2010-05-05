@@ -6,32 +6,33 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'adapte_de' => 'adapt&eacute; de',
+	'adapte_de' => 'adapted from',
+
 	// B
 
 	// C
-	'conception_graphique_par' => 'Habillage visuel (c)',
-	'commentaire' => 'commentaire',
-	'commentaires' => 'commentaires',
+	'conception_graphique_par' => 'Graphic design (c)',
+	'commentaire' => 'comment',
+	'commentaires' => 'comments',
 
 	// D
-	'date_forum' => 'Le @date@ &agrave; @heure@',
+	'date_forum' => '@date@ at @heure@',
 
 	// I
 
 	// L
-	'lire_la_suite' => 'Lire la suite',
-	'lire_la_suite_de' => ' de ',
+	'lire_la_suite' => 'Read more',
+	'lire_la_suite_de' => ' of ',
 
 	// M
 
 	// P
-	'personaliser_nav' => 'Personnaliser ce menu',
+	'personaliser_nav' => 'Customize this menu',
 
 	// R
 
 	// S
-	'sous_licence' => 'sous Licence',
+	'sous_licence' => 'under License',
 
 	// T
 

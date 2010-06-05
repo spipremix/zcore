@@ -37,6 +37,7 @@ function Z_styliser($flux){
 
 	// bigpipe : ne pas calculer le bloc, mais renvoyer un js qui le loadera an ajax
 	if (defined('_Z_BIGPIPE')
+		AND !_IS_BOT
 		AND !_request('var_zajax')
 		AND $dir = explode('/',$fond)
 		AND $dir = reset($dir)

@@ -34,6 +34,20 @@ function Z_styliser($flux){
 	$squelette = $flux['data'];
 	$fond = $flux['args']['fond'];
 	$ext = $flux['args']['ext'];
+
+	// bigpipe : ne pas calculer le bloc, mais renvoyer un js qui le loadera an ajax
+	if (defined('_Z_BIGPIPE')
+		AND !_request('var_zajax')
+		AND $dir = explode('/',$fond)
+		AND $dir = reset($dir)
+		AND $dir !== "head" // performance
+		AND in_array($dir,$z_blocs)
+		AND $pipe = find_in_path("$dir/big_pipe.$ext")
+		){
+		$flux['data'] = substr($pipe, 0, - strlen(".$ext"));
+		return $flux;
+	}
+
 	// gerer les squelettes non trouves
 	// -> router vers les /dist.html
 	// ou scaffolding ou page automatique les contenus
@@ -101,6 +115,11 @@ function Z_styliser($flux){
 	  AND $f=find_in_path($fond."-".$flux['args']['contexte']['composition'].".$ext")){
 		$flux['data'] = substr($f,0,-strlen(".$ext"));
 	}
+	return $flux;
+}
+
+
+function Z_recuperer_fond($flux){
 	return $flux;
 }
 

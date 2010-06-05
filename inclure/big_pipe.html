@@ -11,7 +11,8 @@
 <script type="text/javascript">
 	jQuery('document').ready(function(){
 		var myurl = window.location + "";
-		myurl = myurl + ((myurl.indexOf("?")>0)?"&":"?") + "var_zajax=#ENV{bloc}";
+		myurl = myurl.split('#');
+		myurl = myurl[0] + ((myurl[0].indexOf("?")>0)?"&":"?") + "var_zajax=#ENV{bloc}";
 		$.get(myurl, function(data) {
 			jQuery("#bigpipe-#ENV{bloc}").after(data);
 			jQuery("#bigpipe-#ENV{bloc}").remove();

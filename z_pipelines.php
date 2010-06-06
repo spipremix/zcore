@@ -40,8 +40,9 @@ function Z_styliser($flux){
 		AND !_IS_BOT
 		AND !_request('var_zajax')
 		AND $dir = explode('/',$fond)
+		AND count($dir)==2 // pas un sous repertoire
 		AND $dir = reset($dir)
-		AND $dir !== "head" // performance
+		AND in_array($dir,explode(',',_Z_BIGPIPE))
 		AND in_array($dir,$z_blocs)
 		AND $pipe = find_in_path("$dir/big_pipe.$ext")
 		){

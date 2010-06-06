@@ -7,15 +7,16 @@
   Distribue sous licence GPL
 
 ]
-<div id="bigpipe-#ENV{bloc}" class="bigpipe-loading">Loading...</div>
+#SET{bloc,#ENV{bloc}|dirname|basename}
+<div id="bigpipe-#GET{bloc}" class="bigpipe-loading">Loading...</div>
 <script type="text/javascript">
 	jQuery('document').ready(function(){
 		var myurl = window.location + "";
 		myurl = myurl.split('#');
-		myurl = myurl[0] + ((myurl[0].indexOf("?")>0)?"&":"?") + "var_zajax=#ENV{bloc}";
+		myurl = myurl[0] + ((myurl[0].indexOf("?")>0)?"&":"?") + "var_zajax=#GET{bloc}";
 		$.get(myurl, function(data) {
-			jQuery("#bigpipe-#ENV{bloc}").after(data);
-			jQuery("#bigpipe-#ENV{bloc}").remove();
+			jQuery("#bigpipe-#GET{bloc}").after(data);
+			jQuery("#bigpipe-#GET{bloc}").remove();
 		});
 	});
 </script>

@@ -10,6 +10,13 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 
 // demander a SPIP de definir 'type' dans le contexte du premier squelette
 define('_DEFINIR_CONTEXTE_TYPE',true);
+// verifier une seule fois que l'on peut utiliser APL si demande
+if (defined('_Z_AJAX_PARALLEL_LOAD')
+	AND !_IS_BOT
+	AND !_request('var_zajax')
+	AND _request('var_mode')!=="debug"
+	)
+	define('_Z_AJAX_PARALLEL_LOAD_OK',true);
 
 /**
  * Inutilise mais permet le chargement de ce fichier avant le decodage des urls
@@ -36,15 +43,13 @@ function Z_styliser($flux){
 	$ext = $flux['args']['ext'];
 
 	// Ajax Parallel loading : ne pas calculer le bloc, mais renvoyer un js qui le loadera an ajax
-	if (defined('_Z_AJAX_PARALLEL_LOAD')
-		AND !_IS_BOT
-		AND !_request('var_zajax')
+	if (defined('_Z_AJAX_PARALLEL_LOAD_OK')
 		AND $dir = explode('/',$fond)
 		AND count($dir)==2 // pas un sous repertoire
 		AND $dir = reset($dir)
-		AND in_array($dir,explode(',',_Z_AJAX_PARALLEL_LOAD))
-		AND in_array($dir,$z_blocs)
-		AND $pipe = find_in_path("$dir/z_apl.$ext")
+		AND in_array($dir,$z_blocs) // verifier deja qu'on est dans un bloc Z
+		AND in_array($dir,explode(',',_Z_AJAX_PARALLEL_LOAD)) // et dans un demande en APL
+		AND $pipe = find_in_path("$dir/z_apl.$ext") // et qui contient le squelette APL
 		){
 		$flux['data'] = substr($pipe, 0, - strlen(".$ext"));
 		return $flux;

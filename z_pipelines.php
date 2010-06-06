@@ -121,10 +121,6 @@ function Z_styliser($flux){
 }
 
 
-function Z_recuperer_fond($flux){
-	return $flux;
-}
-
 /**
  * Tester si un type est scaffoldable
  * cad si il correspond bien a un objet en base

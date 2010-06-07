@@ -15,8 +15,10 @@ if (defined('_Z_AJAX_PARALLEL_LOAD')
 	AND !_IS_BOT
 	AND !_request('var_zajax')
 	AND _request('var_mode')!=="debug"
-	)
+	) {
 	define('_Z_AJAX_PARALLEL_LOAD_OK',true);
+	$GLOBALS['marqueur'] .= ":Zapl";
+}
 
 /**
  * Inutilise mais permet le chargement de ce fichier avant le decodage des urls

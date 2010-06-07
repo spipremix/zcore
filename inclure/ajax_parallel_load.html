@@ -8,14 +8,14 @@
 
 ]
 #SET{bloc,#ENV{bloc}|dirname|basename}
-<div id="Zapl-#GET{bloc}" class="Zapl-loading">Loading...</div>
+<div id="zapl-#GET{bloc}" class="zapl-loading">Loading...</div>
 <script type="text/javascript">
 	var myurl = window.location + "";
 	myurl = myurl.split('#');
 	myurl = myurl[0] + ((myurl[0].indexOf("?")>0)?"&":"?") + "var_zajax=#GET{bloc}";
 	$.get(myurl, function(data) {
 		jQuery('document').ready(function(){
-			jQuery("#Zapl-#GET{bloc}").replaceWith(data);
+			jQuery("#zapl-#GET{bloc}").replaceWith(data);
 		});
 	});
 </script>

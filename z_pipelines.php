@@ -20,6 +20,7 @@ if (defined('_Z_AJAX_PARALLEL_LOAD')) {
 	 AND !_IS_BOT
 	 AND !_request('var_zajax')
 	 AND _request('var_mode')!=="debug"
+	 AND $_SERVER['REQUEST_METHOD'] == 'GET'
 	 ) {
 		define('_Z_AJAX_PARALLEL_LOAD_OK',true);
 		$GLOBALS['marqueur'] .= ":Zapl";

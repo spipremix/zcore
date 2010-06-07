@@ -38,6 +38,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// V
 
 	// Z
+	'zapl_loading' => 'Chargement en cours...',
+	'zapl_reload_off' => 'Cliquer ici si la page reste incompl&egrave;te (ou activer le javascript dans votre navigateur)',
 );
 
 ?>

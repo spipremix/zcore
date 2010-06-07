@@ -11,13 +11,19 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 // demander a SPIP de definir 'type' dans le contexte du premier squelette
 define('_DEFINIR_CONTEXTE_TYPE',true);
 // verifier une seule fois que l'on peut utiliser APL si demande
-if (defined('_Z_AJAX_PARALLEL_LOAD')
-	AND !_IS_BOT
-	AND !_request('var_zajax')
-	AND _request('var_mode')!=="debug"
-	) {
-	define('_Z_AJAX_PARALLEL_LOAD_OK',true);
-	$GLOBALS['marqueur'] .= ":Zapl";
+if (defined('_Z_AJAX_PARALLEL_LOAD')) {
+	if (_request('var_zapl')=='non') {
+		include_spip('inc/cookie');
+		spip_setcookie('no_zapl',$_COOKIE['no_zapl']='no_zapl');
+	}
+	if (!isset($_COOKIE['no_zapl'])
+	 AND !_IS_BOT
+	 AND !_request('var_zajax')
+	 AND _request('var_mode')!=="debug"
+	 ) {
+		define('_Z_AJAX_PARALLEL_LOAD_OK',true);
+		$GLOBALS['marqueur'] .= ":Zapl";
+	}
 }
 
 /**

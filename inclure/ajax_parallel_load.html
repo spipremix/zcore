@@ -8,7 +8,7 @@
 
 ]
 #SET{bloc,#ENV{bloc}|dirname|basename}
-<div id="zapl-#GET{bloc}" class="zapl-loading">Loading...</div>
+<div id="zapl-#GET{bloc}" class="zapl-loading"><:zpip:zapl_loading:></div>
 <script type="text/javascript">
 	var myurl = window.location + "";
 	myurl = myurl.split('#');
@@ -19,3 +19,6 @@
 		});
 	});
 </script>
+<noscript>
+	<a href="<?php echo parametre_url(self(),'var_zapl','non');?>"><:zpip:zapl_reload_off:></a>
+</noscript>

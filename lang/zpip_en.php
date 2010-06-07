@@ -40,7 +40,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// Z
 	'zapl_loading' => 'Loading...',
-	'zapl_reload_off' => 'Clic here if the page remains empty (or activate javascript inyour browser)',
+	'zapl_reload_off' => 'Click here if this page remains empty (or activate javascript in your browser)',
 );
 
 ?>

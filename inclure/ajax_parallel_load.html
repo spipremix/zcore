@@ -22,5 +22,6 @@
 	});
 </script>
 <noscript>
-	<a href="<?php echo parametre_url(self(),'var_zapl','non');?>"><:zpip:zapl_reload_off:></a>
+	<meta http-equiv="refresh" content="2;url=<?php echo ($url=parametre_url(self(),'var_zapl','non'));?>">
+	<a href="<?php echo $url ?>"><:zpip:zapl_reload_off:></a>
 </noscript>

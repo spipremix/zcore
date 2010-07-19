@@ -10,7 +10,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// B
 
 	// C
-	'conception_graphique_par' => 'Habillage visuel (c)',
+	'conception_graphique_par' => 'Habillage visuel &copy;',
 	'commentaire' => 'commentaire',
 	'commentaires' => 'commentaires',
 

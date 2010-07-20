@@ -3,8 +3,8 @@
 	<auteur>Matthieu Marcillaud, C&eacute;dric Morin, Romy Tetue, Collectif SPIP</auteur>
 	<icon>img/zpip-128.png</icon>
 	<licence>GNU/GPL</licence>
-	<version>1.7.9</version>
-	<etat>stable</etat>
+	<version>2.0.0-dev</version>
+	<etat>dev</etat>
 	<description>Syst&egrave;me de squelette
 _ Un squelette comme <code>squelettes-dist/</code> de SPIP,
 avec une organisation et une modularit&eacute; optimis&eacute;e, 

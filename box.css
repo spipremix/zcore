@@ -5,8 +5,9 @@ version: 0.2
 */
 /* **************** BLOCK STRUCTURES ***************** */
 /* box */
-.box{margin:10px;}
-.hd,.bd,.ft{padding:0 10px;/*overflow:hidden;_overflow:visible; _zoom:1;*/}
+.box{margin:10px 0;}
+.bd,.ft{padding:0 10px;/*overflow:hidden;_overflow:visible; _zoom:1;*/}
+.hd {padding:5px 10px;}
 .box .inner{position:relative;}
 .box b{display:block;background-repeat:no-repeat;font-size:1%;position:relative;z-index:10;}
 .box .inner b{display:inline;font-size:inherit;position:static;}

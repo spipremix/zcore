@@ -41,10 +41,11 @@
 .inverse .inner{background-color:#333333;color:#ffffff}
 
 /* ====== Block headers and footers ====== */
-.section{background: #e9e9e9 url(img/box/header.png) repeat-x left bottom; color:#de2c72;font-size:120%;padding:5px 10px;}
-.section h1,.section h2,.section h3,.section h4,.section h5,.section h6{font-size:100%;color:#de2c72;padding:0;}
-.act{background-color:#e9e9e9;}
-.topper{background: #fff url(img/box/header_gradient_light.png) repeat-x left bottom;color: #4D4D4D;font-size:120%;padding:5px 10px;}
-.topper h1,.topper h2,.topper h3,.topper h4,.topper h5,.topper h6{font-size:100%;color:#4D4D4D;padding:0;}
-.bam{background: #00477a url(img/box/header_glossy.png) repeat-x left top;color: #fff;font-size:120%;padding:5px 10px;}
+.section{background: #e9e9e9; color:#70617E;font-size:120%;padding:5px 10px;}
+.section h1,.section h2,.section h3,.section h4,.section h5,.section h6{font-size:100%;color:#70617E;padding:0;}
+.bam{background: #46839B;color: #fff;font-size:120%;padding:5px 10px;}
 .bam h1,.bam h2,.bam h3,.bam h4,.bam h5,.bam h6{font-size:100%;color:#fff;padding:0;}
+.topper{background: #fff;color: #4D4D4D;font-size:120%;padding:5px 10px;border:1px solid #eee;}
+.topper h1,.topper h2,.topper h3,.topper h4,.topper h5,.topper h6{font-size:100%;color:#4D4D4D;padding:0;}
+
+.act{background-color:#e9e9e9;}

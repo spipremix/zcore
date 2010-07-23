@@ -3,13 +3,16 @@
 /* remove *background-image:" to default to square corners for IE */
 /* ----- simple (extends box) ----- */
 .simple .inner {border:1px solid #D7D7D7;-moz-border-radius: 7px;-webkit-border-radius: 7px;border-radius: 7px;}
+.simple .inner .hd {-moz-border-radius: 7px 7px 0 0;-webkit-border-radius: 7px 7px 0 0;border-radius: 7px 7px 0 0;}
 .simple b{*background-image:url(img/box/simple_corners.png);}
 /* ----- basic (extends box) ----- */
 .basic .inner {-moz-border-radius: 7px;-webkit-border-radius: 7px;border-radius: 7px;}
+.basic .inner .hd {-moz-border-radius: 7px 7px 0 0;-webkit-border-radius: 7px 7px 0 0;border-radius: 7px 7px 0 0;}
 .basic b{*background-image:url(img/box/round.png);}
 /* ----- simpleExt (extends box) ----- */
 .simpleExt,.simpleExt .inner{border:1px solid #c7c7c7;-moz-border-radius: 7px;-webkit-border-radius: 7px;border-radius: 7px; }
 .simpleExt .inner{border-color:#fff; border-width:4px; background-color:#e2e2e2;}
+.simpleExt .inner .hd {-moz-border-radius: 7px 7px 0 0;-webkit-border-radius: 7px 7px 0 0;border-radius: 7px 7px 0 0;}
 .simpleExt b{*background-image:url(img/box/simple_extended.png);}
 .simpleExt .tl{left:-1px;top:-1px;height:12px; width:12px;}
 .simpleExt .tr{right:-1px;top:-1px;height:12px; width:12px;}
@@ -18,6 +21,7 @@
 /* ----- me (extends box) use for my comments ----- */
 .me,.me .inner{border:1px solid #909090;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
 .me .inner{border-color:#d76a84;}
+.me .inner .hd {-moz-border-radius: 5px 5px 0 0;-webkit-border-radius: 5px 5px 0 0;border-radius: 5px 5px 0 0;}
 .me b{*background-image:url(img/box/me.png);}
 .me .tl{left:-1px;top:-1px;}
 .me .tr{right:-1px;top:-1px;}
@@ -26,6 +30,7 @@
 /* ----- noted (extends box) ----- */
 .noted,.noted .inner{border:1px solid #c2c2c2;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
 .noted .inner{border-color:#eded68;}
+.noted .inner .hd {-moz-border-radius: 5px 5px 0 0;-webkit-border-radius: 5px 5px 0 0;border-radius: 5px 5px 0 0;}
 .noted b{*background-image:url(img/box/noted.png);}
 .noted .tl{left:-1px;top:-1px;}
 .noted .tr{right:-1px;top:-1px;}
@@ -39,6 +44,7 @@
 /* ----- talk (extends box) ----- */
 .talk,.talk .inner{border:1px solid #c7c7c7;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
 .talk .inner{border-color:#ededed;}
+.talk .inner .hd {-moz-border-radius: 5px 5px 0 0;-webkit-border-radius: 5px 5px 0 0;border-radius: 5px 5px 0 0;}
 .talk b{*background-image:url(img/box/talk.png);}
 .talk .tl{left:-1px;top:-1px;}
 .talk .tr{right:-1px;top:-1px;}

@@ -3,31 +3,31 @@
 
     <BOUCLE_contexte_article(ARTICLES) {id_article}>
     <BOUCLE_ariane_article(HIERARCHIE) {id_article}>
-    &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
     </BOUCLE_ariane_article>
-    &gt; <a href="#URL_ARTICLE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_ARTICLE">[(#TITRE|couper{80})]</a>
     </BOUCLE_contexte_article>
     </B_contexte_article>
 
     <BOUCLE_contexte_breve(BREVES) {id_breve}>
     <BOUCLE_ariane_breve(RUBRIQUES) {id_rubrique}>
-    &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
     </BOUCLE_ariane_breve>
-    &gt; <a href="#URL_BREVE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_BREVE">[(#TITRE|couper{80})]</a>
     </BOUCLE_contexte_breve>
 
     <BOUCLE_contexte_rubrique(RUBRIQUES) {id_rubrique}>
     <BOUCLE_ariane_rubrique(HIERARCHIE) {id_rubrique}>
-    &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
     </BOUCLE_ariane_rubrique>
-    &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
     </BOUCLE_contexte_rubrique>
 
     <BOUCLE_contexte_site(SITES) {id_syndic}>
     <BOUCLE_ariane_site(HIERARCHIE) {id_rubrique}>
-    &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>
     </BOUCLE_ariane_site>
-    &gt; <a href="[(#ID_SYNDIC|generer_url_entite{'site'})]">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="[(#ID_SYNDIC|generer_url_entite{'site'})]">[(#TITRE|couper{80})]</a>
     </BOUCLE_contexte_site>
 
     <//B_contexte_site>
@@ -36,10 +36,10 @@
     <//B_contexte_article>
 
     <BOUCLE_contexte_forum(FORUMS) {id_forum}>
-    &gt; <a href="#URL_FORUM">[(#TITRE|couper{80})]</a>
+    <span class="sep"> &gt; </span><a href="#URL_FORUM">[(#TITRE|couper{80})]</a>
     </BOUCLE_contexte_forum>
 
-    &gt; <strong class="on"><:poster_message:></strong>
+    <span class="sep"> &gt; </span><strong class="on"><:poster_message:></strong>
     
 </p><!--#hierarchie-->
 

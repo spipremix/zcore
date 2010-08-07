@@ -64,7 +64,7 @@
 		<h2 class="h2"><:breves:></h2>
 		<ul class="liste-items">
 				<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
-				<li class="item">[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE">#TITRE</a></li>
+				<li class="item">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate_jourcourt)</abbr><span class="sep"> &ndash; </span>]<a href="#URL_BREVE">#TITRE</a></li>
 				</BOUCLE_breves>
 		</ul>
 		[<p class="pagination">(#PAGINATION)</p>]

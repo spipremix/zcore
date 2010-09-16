@@ -12,6 +12,10 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 define('_DEFINIR_CONTEXTE_TYPE',true);
 // verifier une seule fois que l'on peut utiliser APL si demande
 if (defined('_Z_AJAX_PARALLEL_LOAD')) {
+	// les pages APL contiennent un <noscript>
+	// avec une meta refresh sur self()+var_zapl=non
+	// ainsi, les clients sans javascript rechargent la page,
+	// se voient poser un cookie, et voient ensuite le site sans APL
 	if (_request('var_zapl')=='non') {
 		include_spip('inc/cookie');
 		spip_setcookie('no_zapl',$_COOKIE['no_zapl']='no_zapl');

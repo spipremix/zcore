@@ -41,8 +41,10 @@
 .inverse .inner{background-color:#333333;color:#ffffff}
 
 /* ====== Block headers and footers ====== */
+/*
 .section{background: #e9e9e9; color:#70617E;font-size:120%;padding:5px 10px;}
 .section h1,.section h2,.section h3,.section h4,.section h5,.section h6{font-size:100%;color:#70617E;padding:0;}
+*/
 .bam{background: #46839B;color: #fff;font-size:120%;padding:5px 10px;}
 .bam h1,.bam h2,.bam h3,.bam h4,.bam h5,.bam h6{font-size:100%;color:#fff;padding:0;}
 .topper{background: #fff;color: #4D4D4D;font-size:120%;padding:5px 10px;border:1px solid #eee;}

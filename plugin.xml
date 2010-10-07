@@ -1,14 +1,21 @@
 <plugin>
-	<nom>Squelettes Z pour SPIP (Zpip)</nom>
-	<auteur>Matthieu Marcillaud, C&eacute;dric Morin, Romy Tetue, Collectif SPIP</auteur>
+	<nom><multi>[fr]Squelettes Z pour SPIP (Zpip)[en]Z skeletons for SPIP (Zpip)</multi></nom>
+	<auteur>Matthieu Marcillaud, C&#233;dric Morin, Romy Tetue, Collectif SPIP</auteur>
 	<icon>img/zpip-128.png</icon>
 	<licence>GNU/GPL</licence>
 	<version>2.0.0-dev</version>
 	<etat>dev</etat>
-	<description>Syst&egrave;me de squelette
+	<description>
+		<multi>
+			[fr]Syst&#232;me de squelette
 _ Un squelette comme <code>squelettes-dist/</code> de SPIP,
-avec une organisation et une modularit&eacute; optimis&eacute;e, 
-et qui permet d'utiliser les th&egrave;mes de [->http://www.spip-contrib.net/Themes]
+avec une organisation et une modularit&#233; optimis&#233;e, 
+et qui permet d'utiliser les th&#232;mes de [->http://www.spip-contrib.net/Themes]
+			[en]Skeleton system
+_ A skeleton like <code>squelettes-dist/</code> of SPIP,
+with an optimized organization and modularity,
+and which can use the themes of [-> http://www.spip-contrib.net/Themes]
+		</multi>
 	</description>
 	<prefix>Z</prefix>
 	<fonctions>z_pipelines.php</fonctions>

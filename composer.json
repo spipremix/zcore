@@ -1,0 +1,13 @@
+{
+    "name": "spipremix/zcore",
+    "description": "Z Framework pour SPIP (Zpip)",
+    "type": "spip-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Cédric Morin",
+            "email": "cedric@yterium.net"
+        }
+    ],
+    "require": {}
+}
